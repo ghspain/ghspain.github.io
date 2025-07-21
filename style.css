@@ -9,7 +9,6 @@
   --border-radius:.2rem;
 }
 
-
 /* -----COMMON------ */
 
 *{
@@ -19,22 +18,87 @@
   font-family: "Poppins", sans-serif;
   font-size: clamp(1.5rem, 8vw -2rem, 3rem);
 }
+
 body{
  contain: paint;
 }
+
 a{
   text-decoration: none;
   color: inherit;
 }
+
 ul,li{
   list-style: none;
 }
+
 h1,h2,h3{
   font-family: "Kalam", sans-serif;
 }
 
 main, footer{
   background-color: whitesmoke;
+}
+
+/* -----ACCESIBILIDAD------ */
+
+/* Skip link para accesibilidad */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--main-color);
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Mejoras para usuarios con preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Mejora del focus para accesibilidad */
+*:focus {
+    outline: 2px solid var(--contrast-color);
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Loading state para imágenes lazy */
+img[data-src],
+.loading-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Mejora del menú móvil */
+.menu-visible {
+    overflow: hidden;
 }
 
 /* -------HEADER------ */
@@ -301,12 +365,34 @@ h3{
   padding: 0;
   width: 400%;
   animation: slide 15s infinite cubic-bezier(0.55, 0.48, 0.37, 0.92);
+  animation-play-state: running;
 }
+
+.slide:hover ul {
+  animation-play-state: paused;
+}
+
+.slide ul:focus-within {
+  animation-play-state: paused;
+}
+
 .slide li{
   width: 100%;
 }
+
 li img{
   width:100%;
+  height: auto;
+}
+
+/* Mejora de imágenes del carousel */
+.carousel-img {
+  transition: transform 0.3s ease;
+}
+
+.carousel-img:hover,
+.carousel-img:focus {
+  transform: scale(1.02);
 }
 
 .footer{

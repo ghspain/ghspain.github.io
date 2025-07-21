@@ -1,0 +1,29 @@
+# Archivos de desarrollo
+*.log
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.swp
+*.swo
+*~
+
+# Archivos minificados generados localmente
+style.min.css
+*.min.js
+*.min.css
+
+# Reportes de validación
+lighthouse-report.html
+validation-report.txt
+audit-report.json
+
+# Cache de herramientas
+.cache/
+node_modules/
+.npm/
+
+# Archivos de backup
+*.bak
+*.backup

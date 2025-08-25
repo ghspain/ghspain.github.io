@@ -1,29 +1,23 @@
-# Archivos de desarrollo
-*.log
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
 .DS_Store
-Thumbs.db
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Archivos temporales
-*.tmp
-*.swp
-*.swo
-*~
-
-# Archivos minificados generados localmente
-style.min.css
-*.min.js
-*.min.css
-
-# Reportes de validación
-lighthouse-report.html
-validation-report.txt
-audit-report.json
-
-# Cache de herramientas
-.cache/
-node_modules/
-.npm/
-
-# Archivos de backup
-*.bak
-*.backup
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

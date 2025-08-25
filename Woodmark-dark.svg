@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1679.01 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .02em;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        isolation: isolate;
+      }
+
+      .cls-1, .cls-3 {
+        font-family: MonaSans-Bold, 'Mona Sans';
+        font-size: 288.15px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g class="cls-2">
+    <text class="cls-3" transform="translate(0 249.1)"><tspan x="0" y="0">G</tspan></text>
+    <text class="cls-3" transform="translate(235.71 249.1)"><tspan x="0" y="0">itHub </tspan></text>
+    <text class="cls-3" transform="translate(0 588.1)"><tspan x="0" y="0">Communi</tspan></text>
+    <text class="cls-3" transform="translate(1397.48 588.1)"><tspan x="0" y="0">t</tspan></text>
+    <text class="cls-3" transform="translate(1514.77 588.1)"><tspan x="0" y="0">y</tspan></text>
+    <text class="cls-3" transform="translate(0 927.1)"><tspan x="0" y="0">S</tspan></text>
+    <text class="cls-1" transform="translate(192.48 927.1)"><tspan x="0" y="0">p</tspan></text>
+    <text class="cls-3" transform="translate(380.05 927.1)"><tspan x="0" y="0">ain</tspan></text>
+  </g>
+</svg>

@@ -15,7 +15,8 @@ const HeroSection: React.FC = () => {
             <Hero.PrimaryAction href="https://www.meetup.com/ghspain" animate="scale-in-down">Conócenos</Hero.PrimaryAction>
             <Hero.Image
               position="inline-end"
-              src="https://ghspain.github.io/images/events/S1_07231.webp"
+              src={`${process.env.PUBLIC_URL}/images/photos/image.webp`} 
+              
               alt="placeholder, blank area with a gray background color"
               style={{ height: '100%' }}
               animate="slide-in-left"

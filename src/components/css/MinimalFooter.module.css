@@ -1,0 +1,170 @@
+.Footer {
+    position: relative;
+    background-color: var(--brand-footer-bg-color);
+  }
+  
+  /**
+   * Footer shared styles
+   */
+  .Footer__container {
+    max-width: var(--brand-footer-max-width, 1280px);
+    padding: 0 28px; /* should match SubdomainNavBar */
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  /**
+   * Footer terms section
+   */
+  .Footer__terms {
+    padding: var(--base-size-48) 0;
+  }
+  
+  .Footer__terms-item {
+    margin-bottom: var(--base-size-24);
+  }
+  
+  .Footer__terms-item sup {
+    font-size: var(--base-size-12);
+    vertical-align: super;
+    display: inline-block;
+    margin-right: var(--base-size-4);
+  }
+  
+  .Footer__terms-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  /**
+   * Footer social and logomarks section
+   */
+  .Footer__social-links {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--base-size-16);
+  }
+  
+  .Footer__logomarks {
+    border-top: var(--brand-borderWidth-thin) solid var(--brand-color-border-default);
+    border-bottom: var(--brand-borderWidth-thin) solid var(--brand-color-border-default);
+  }
+  
+  .Footer__logomarks,
+  .Footer__legal-and-links {
+    padding-top: var(--base-size-48);
+    padding-bottom: var(--base-size-48);
+  }
+  
+  .Footer__social-link {
+    position: relative;
+  }
+  
+  .Footer__social-link::before {
+    content: '';
+    display: block;
+    position: absolute;
+    min-width: var(--base-size-24);
+    min-height: var(--base-size-24);
+  }
+  
+  .Footer__social-link:hover .Footer__social-icon,
+  .Footer__social-link:focus-visible .Footer__social-icon {
+    filter: var(--brand-footer-socialIcon-hoverFilter);
+  }
+  
+  .Footer__social-icon {
+    width: 24px;
+    height: auto;
+  }
+  
+  [data-color-mode='light'] .Footer__social-icon {
+    filter: brightness(95%) saturate(100%);
+  }
+  
+  /**
+   * Footer logo with theme support
+   */
+  .Footer__logo {
+    width: 200px; /* Definir un ancho específico para que la imagen se muestre */
+    min-width: 150px; /* Ancho mínimo */
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Default to dark theme logo */
+    background-image: url('/public/images/logos/svg/Lockup-dark.svg');
+    /* Debug: añadir un borde temporal para ver el elemento */
+
+  }
+  
+  /* Light theme logo */
+  [data-color-mode='light'] .Footer__logo {
+    background-image: url('/public/images/logos/svg/Lockup-dark.svg');
+  }
+  
+  /* Dark theme logo (explicit for clarity) */
+  [data-color-mode='dark'] .Footer__logo {
+    background-image: url('/public/images/logos/svg/Lockup-light.svg');
+  }
+  
+  /**
+   * Footer legal section
+   */
+  
+  .Footer__copyright {
+    display: flex;
+    order: 2;
+    padding-bottom: var(--base-size-4);
+  }
+  
+  @media screen and (min-width: 48rem) {
+    .Footer__copyright {
+      order: 1;
+    }
+  }
+  
+  .Footer__links {
+    order: 1;
+  }
+  
+  @media screen and (min-width: 48rem) {
+    .Footer__links {
+      order: 2;
+    }
+  }
+  
+  .Footer__link {
+    align-self: flex-start;
+    color: var(--brand-color-text-muted);
+    text-decoration: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: var(--brand-borderWidth-thin) solid transparent;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 0 0 var(--base-size-4) 0;
+    transition: border var(--brand-animation-duration-fast) var(--brand-animation-easing-glide);
+  }
+  
+  .Footer__link:hover {
+    color: var(--brand-color-text-default);
+    border-bottom-color: var(--brand-color-text-muted);
+    text-decoration: none;
+  }
+  
+  /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+  @media (prefers-reduced-motion: reduce) {
+    .Footer,
+    .Footer::before,
+    .Footer::after,
+    .Footer * {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }

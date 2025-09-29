@@ -32,7 +32,7 @@ function parseIssueContent(issue) {
 
 function shouldProcessIssue(issueData) {
   // Verificar que el autor sea alexcerezo
-  const isCorrectAuthor = issueData.user && issueData.user.login === 'alexcerezo';
+  const isCorrectAuthor = issueData.user && issueData.user.login === 'ghspain-user';
   
   // Verificar que tenga el label "Event"
   const hasEventLabel = issueData.labels && issueData.labels.some(label => 

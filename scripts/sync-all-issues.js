@@ -12,7 +12,7 @@ const { syncIssue, shouldProcessIssue } = require('./sync-issue');
 
 // Configuración por defecto
 const DEFAULT_CONFIG = {
-  owner: 'alexcerezo',
+  owner: 'ghspain-user',
   repo: 'ghspain',
   outputPath: 'public/data/issues.json'
 };
@@ -129,13 +129,13 @@ async function syncAllIssues() {
       console.log('🗑️ Archivo existente eliminado');
     }
     
-    // Filtrar issues que cumplen los criterios (autor: alexcerezo, label: Event)
+    // Filtrar issues que cumplen los criterios (autor: ghspain-user, label: Event)
     const filteredIssues = allIssues.filter(issue => shouldProcessIssue(issue));
     
-    console.log(`📊 Issues filtrados: ${filteredIssues.length}/${allIssues.length} (autor: alexcerezo, label: Event)`);
+    console.log(`📊 Issues filtrados: ${filteredIssues.length}/${allIssues.length} (autor: ghspain-user, label: Event)`);
     
     if (filteredIssues.length === 0) {
-      console.log('ℹ️ No se encontraron issues que cumplan los filtros (autor: alexcerezo, label: Event)');
+      console.log('ℹ️ No se encontraron issues que cumplan los filtros (autor: ghspain-user, label: Event)');
       return;
     }
     

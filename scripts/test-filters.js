@@ -8,7 +8,7 @@ console.log('🧪 Testeando filtros de issues...\n');
 // Test 1: Issue válido (autor correcto + label correcto)
 const validIssue = {
   number: 1,
-  user: { login: 'alexcerezo' },
+  user: { login: 'ghspain-user' },
   labels: [{ name: 'Event' }, { name: 'important' }]
 };
 
@@ -30,7 +30,7 @@ console.log();
 // Test 3: Sin label "Event"
 const wrongLabel = {
   number: 3,
-  user: { login: 'alexcerezo' },
+  user: { login: 'ghspain-user' },
   labels: [{ name: 'bug' }, { name: 'important' }]
 };
 
@@ -41,7 +41,7 @@ console.log();
 // Test 4: Autor correcto pero sin labels
 const noLabels = {
   number: 4,
-  user: { login: 'alexcerezo' },
+  user: { login: 'ghspain-user' },
   labels: []
 };
 
@@ -52,7 +52,7 @@ console.log();
 // Test 5: Label "event" en minúsculas (debería funcionar)
 const lowercaseLabel = {
   number: 5,
-  user: { login: 'alexcerezo' },
+  user: { login: 'ghspain-user' },
   labels: [{ name: 'event' }]
 };
 

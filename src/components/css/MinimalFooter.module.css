@@ -96,19 +96,19 @@
     background-repeat: no-repeat;
     background-position: center;
     /* Default to dark theme logo */
-    background-image: url('/public/images/logos/svg/Lockup-dark.svg');
+    background-image: url('/public/images/logos/svg/Woodmark-dark.svg');
     /* Debug: añadir un borde temporal para ver el elemento */
 
   }
   
   /* Light theme logo */
   [data-color-mode='light'] .Footer__logo {
-    background-image: url('/public/images/logos/svg/Lockup-dark.svg');
+    background-image: url('/public/images/logos/svg/Woodmark-dark.svg');
   }
   
   /* Dark theme logo (explicit for clarity) */
   [data-color-mode='dark'] .Footer__logo {
-    background-image: url('/public/images/logos/svg/Lockup-light.svg');
+    background-image: url('/public/images/logos/svg/Woodmark-light.svg');
   }
   
   /**

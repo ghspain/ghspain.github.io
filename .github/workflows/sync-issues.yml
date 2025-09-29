@@ -42,13 +42,13 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         if [[ -n $(git status --porcelain) ]]; then
-        git add public/data/issues.json
-        git commit -m "🤖 Sync issue #${{ github.event.issue.number }} (${{ github.event.action }})"
-        git pull --rebase origin main
-        git push
-        echo "✅ Cambios commiteados y pusheados"
+          git add public/data/issues.json
+          git commit -m "🤖 Sync issue #${{ github.event.issue.number }} (${{ github.event.action }})"
+          git pull --rebase origin main
+          git push
+          echo "✅ Cambios commiteados y pusheados"
         else
-        echo "ℹ️ No hay cambios para commitear"
+          echo "ℹ️ No hay cambios para commitear"
         fi
 
     - name: Save issues.json to temp before switching branch

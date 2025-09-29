@@ -122,7 +122,7 @@ const TimelineSection: React.FC = () => {
             </SectionIntro>
             <Stack padding="spacious" alignItems="center" gap="spacious">
                 <Timeline fullWidth={true}>
-                    {events.map((event) => {
+                    {events.slice(0, 5).map((event) => {
                         const isFuture = new Date(event.event_date) > new Date();
                         return (
                             <Timeline.Item key={event.event_id}>
@@ -136,7 +136,7 @@ const TimelineSection: React.FC = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        {isFuture ? 'Únete! - ' : ''}{event.event_name}
+                                        {isFuture ? 'Próximamente: ' : ''}{event.event_name}
                                     </Link>
                                 </Animate>
                             </Timeline.Item>

@@ -122,23 +122,26 @@ const TimelineSection: React.FC = () => {
             </SectionIntro>
             <Stack padding="spacious" alignItems="center" gap="spacious">
                 <Timeline fullWidth={true}>
-                    {events.map((event) => (
-                        <Timeline.Item key={event.event_id}>
-                            <Animate animate="fade-in">
-                            {formatDate(event.event_date)}{' '}
-                            </Animate>
-                            <Animate animate="slide-in-right">
-                            <Link
-                                arrowDirection='none'
-                                href={event.event_link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {event.event_name}
-                            </Link>
-                            </Animate>
-                        </Timeline.Item>
-                    ))}
+                    {events.map((event) => {
+                        const isFuture = new Date(event.event_date) > new Date();
+                        return (
+                            <Timeline.Item key={event.event_id}>
+                                <Animate animate="fade-in">
+                                    {formatDate(event.event_date)}{' '}
+                                </Animate>
+                                <Animate animate="slide-in-right">
+                                    <Link
+                                        arrowDirection='none'
+                                        href={event.event_link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {isFuture ? 'Únete! - ' : ''}{event.event_name}
+                                    </Link>
+                                </Animate>
+                            </Timeline.Item>
+                        );
+                    })}
                 </Timeline>
             </Stack>
         </Section>

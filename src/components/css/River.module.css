@@ -208,3 +208,6 @@
     margin-block-start: 0;
   }
 }
+
+    /* Removed unused compact variant and organizer-visual overrides (not referenced).
+      Collapsed summary styles have been removed as the collapsed UI is no longer used. */

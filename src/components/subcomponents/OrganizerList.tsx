@@ -25,7 +25,7 @@ export function OrganizerList({ organizers }: { organizers: Organizer[] }) {
             imageTextRatio="40:60"
           >
             <River.Visual>
-              <img src={getImageUrl(organizer.img)} alt={organizer.name} />
+              <img src={getImageUrl(organizer.img)} alt={`Profile photo of ${organizer.name}`} />
             </River.Visual>
             <River.Content animate={animationDirection}>
               <Heading>{organizer.name}</Heading>

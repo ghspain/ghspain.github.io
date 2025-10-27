@@ -1,0 +1,13 @@
+{
+  "name": "sync-meetup-events-action",
+  "version": "1.0.0",
+  "description": "GitHub Action to sync events from Meetup",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "puppeteer": "^23.0.0"
+  }
+}

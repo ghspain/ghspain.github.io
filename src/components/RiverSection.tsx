@@ -1,3 +1,4 @@
+import React from 'react'
 import { Section, Stack, AnimationProvider, SectionIntro } from '@primer/react-brand'
 import { useOrganizers } from '../hooks'
 import { OrganizerList } from './subcomponents/OrganizerList'

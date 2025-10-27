@@ -9,6 +9,8 @@ on:
 jobs:
   sync-events:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout repository
@@ -19,24 +21,35 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm'
+        cache-dependency-path: actions/sync-meetup-events/package-lock.json
+
+    # Cache Puppeteer downloads (Chromium) to speed up installs
+    - name: Cache Puppeteer
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/puppeteer
+        key: puppeteer-${{ runner.os }}-${{ hashFiles('actions/sync-meetup-events/package-lock.json') }}
+        restore-keys: |
+          puppeteer-${{ runner.os }}-
 
     - name: Install action dependencies
-      run: |
-        cd actions/sync-meetup-events
-        npm ci
+      working-directory: actions/sync-meetup-events
+      env:
+        PUPPETEER_CACHE_DIR: ~/.cache/puppeteer
+      run: npm ci
 
     - name: Sync events from Meetup
       uses: ./actions/sync-meetup-events
       with:
         json-path: 'public/data/issues.json'
 
-    - name: Check for changes
+    - name: Check for changes in data file
       id: verify-changed-files
       run: |
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "changed=true" >> $GITHUB_OUTPUT
-        else
+        if git diff --quiet -- public/data/issues.json; then
           echo "changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
         fi
 
     - name: Commit and push changes

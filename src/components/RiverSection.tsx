@@ -1,8 +1,7 @@
-import React from 'react'
+import * as React from 'react';
 import { Section, Stack, AnimationProvider, SectionIntro } from '@primer/react-brand'
 import { useOrganizers } from '../hooks'
 import { OrganizerList } from './subcomponents/OrganizerList'
-
 const RiverSection: React.FC = () => {
   const { data, loading, error } = useOrganizers()
 

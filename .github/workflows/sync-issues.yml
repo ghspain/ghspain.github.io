@@ -2,7 +2,7 @@ name: Sync Issues to JSON
 
 on:
   issues:
-    types: [opened, edited, closed]
+    types: [opened, labeled, edited, reopened, closed]
 
 permissions:
   contents: write
@@ -15,58 +15,64 @@ concurrency:
 jobs:
   sync-issues:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Create issues directory if not exists
-      run: mkdir -p public/data
+      - name: Create issues directory if not exists
+        run: mkdir -p public/data
 
-    - name: Sync issue to JSON
-      env:
-        ISSUE_JSON: ${{ toJSON(github.event.issue) }}
-        ISSUE_ACTION: ${{ github.event.action }}
-        OUTPUT_PATH: public/data/issues.json
-      run: node scripts/sync-issue.js
+      - name: Install action dependencies (sync-issue)
+        working-directory: actions/sync-issue
+        run: npm ci
 
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        if [[ -n $(git status --porcelain) ]]; then
+      - name: Sync issue to JSON (local action)
+        uses: ./actions/sync-issue
+        with:
+          json-path: public/data/issues.json
+
+      - name: Check for changes in data file
+        id: verify
+        run: |
+          if git diff --quiet -- public/data/issues.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes to main
+        if: steps.verify.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add public/data/issues.json
           git commit -m "🤖 Sync issue #${{ github.event.issue.number }} (${{ github.event.action }})"
           git pull --rebase origin main
-          git push
-          echo "✅ Cambios commiteados y pusheados"
-        else
-          echo "ℹ️ No hay cambios para commitear"
-        fi
+          git push origin HEAD:main
 
-    - name: Save issues.json to temp before switching branch
-      run: cp public/data/issues.json /tmp/issues.json
+      - name: Save issues.json to temp before switching branch
+        if: steps.verify.outputs.changed == 'true'
+        run: cp public/data/issues.json /tmp/issues.json
 
-    - name: Push issues.json to gh-pages
-      run: |
-        git fetch origin gh-pages
-        git checkout gh-pages
-        mkdir -p data
-        cp /tmp/issues.json data/issues.json
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        if [[ -n $(git status --porcelain data/issues.json) ]]; then
-          git add data/issues.json
-          git commit -m "🤖 Sync issue #${{ github.event.issue.number }} (${{ github.event.action }}) [gh-pages]"
-          git push origin gh-pages
-          echo "✅ issues.json actualizado en gh-pages"
-        else
-          echo "ℹ️ No hay cambios para commitear en gh-pages"
-        fi
+      - name: Push issues.json to gh-pages
+        if: steps.verify.outputs.changed == 'true'
+        run: |
+          git fetch origin gh-pages || true
+          git checkout gh-pages || git switch -c gh-pages
+          mkdir -p data
+          cp /tmp/issues.json data/issues.json
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          if [[ -n $(git status --porcelain data/issues.json) ]]; then
+            git add data/issues.json
+            git commit -m "🤖 Sync issue #${{ github.event.issue.number }} (${{ github.event.action }}) [gh-pages]"
+            git push origin gh-pages
+          fi

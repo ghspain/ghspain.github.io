@@ -150,8 +150,17 @@
 }
 
 .Card__heading {
+  /* NOTE (lines R284-R289): Heading typography was previously defined in multiple places
+     which caused a conflicting font-size (originally 1.125rem) to be overridden later
+     by the event-specific rule (1.05rem). Consolidated the heading font-size,
+     line-height and font-weight here so there's a single source of truth. If a
+     variant needs a different size, prefer adding a modifier class explicitly.
+  */
   margin-bottom: var(--base-size-20);
   grid-area: heading;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  font-weight: 600;
 }
 
 .Card--fullWidth:not(.Card--align-center) .Card__heading {
@@ -283,9 +292,6 @@
 
 .Card--event .Card__heading {
   margin: var(--base-size-16) var(--base-size-20) 0 var(--base-size-20);
-  font-size: 1.05rem;
-  line-height: 1.2;
-  font-weight: 600;
 }
 
 .Card--event .Card__description {

@@ -1,44 +1,51 @@
 [
   {
-    "event_id": "304075362",
-    "event_name": "GitHub Universe 2024 - Watch Party",
-    "event_link": "https://www.meetup.com/ghspain/events/304075362/",
-    "event_date": "10/29/2024 4:00:00 PM"
-  },
-  {
-    "event_id": "306786861",
-    "event_name": "Shift Left en Seguridad con GitHub Advanced Security - YouTube",
-    "event_link": "https://www.meetup.com/ghspain/events/306786861/",
-    "event_date": "03/19/2025 4:00:00 PM"
-  },
-  {
-    "event_id": "308073297",
-    "event_name": "🧠 Conoce los 2 nuevos agentes de GitHub Copilot: ¡en tu IDE y en GitHub!",
-    "event_link": "https://www.meetup.com/ghspain/events/308073297/",
-    "event_date": "06/11/2025 4:00:00 PM"
-  },
-  {
-    "event_id": "308946545",
-    "event_name": "Skillsets: integrando tus APIs y herramientas en VS Code y Copilot Chat",
-    "event_link": "https://www.meetup.com/ghspain/events/308946545/",
-    "event_date": "7/10/2025 4:00:00 PM"
-  },
-  {
-    "event_id": "310939888",
-    "event_name": "GitHub Universe 2025 - Watch Party - Madrid",
-    "event_link": "https://www.meetup.com/ghspain/events/310939888/",
-    "event_date": "10/28/2025 6:00:00 PM"
-  },
-  {
     "event_id": "310939897",
     "event_name": "GitHub Universe 2025 - PostPartido - Repasando novedades",
     "event_link": "https://www.meetup.com/ghspain/events/310939897/",
-    "event_date": "10/29/2025 5:00:00 PM"
+    "event_date": "10/29/2025 6:00:00 PM",
+    "event_image": "https://secure.meetupstatic.com/photos/event/b/6/c/3/600_530266787.jpeg"
   },
   {
     "event_id": "311099875",
     "event_name": "GitHub Universe 2025 Watch Party Malagueña & The Lord of the Webhooks ✨",
     "event_link": "https://www.meetup.com/ghspain/events/311099875/",
-    "event_date": "10/28/2025 6:00:00 PM"
+    "event_date": "10/28/2025 6:00:00 PM",
+    "event_image": "https://secure.meetupstatic.com/photos/event/8/f/3/8/600_530256664.jpeg"
+  },
+  {
+    "event_id": "310939888",
+    "event_name": "GitHub Universe 2025 - Watch Party - Madrid",
+    "event_link": "https://www.meetup.com/ghspain/events/310939888/",
+    "event_date": "10/28/2025 5:45:00 PM",
+    "event_image": "https://secure.meetupstatic.com/photos/event/b/2/9/c/600_530085724.jpeg"
+  },
+  {
+    "event_id": "308946545",
+    "event_name": "Skillsets: integrando tus APIs y herramientas en VS Code y Copilot Chat",
+    "event_link": "https://www.meetup.com/ghspain/events/308946545/",
+    "event_date": "07/10/2025 4:00:00 PM",
+    "event_image": "https://secure.meetupstatic.com/photos/event/c/8/5/2/600_528951282.jpeg"
+  },
+  {
+    "event_id": "308073297",
+    "event_name": "🧠 Conoce los 2 nuevos agentes de GitHub Copilot: ¡en tu IDE y en GitHub!",
+    "event_link": "https://www.meetup.com/ghspain/events/308073297/",
+    "event_date": "06/11/2025 4:00:00 PM",
+    "event_image": "https://secure.meetupstatic.com/photos/event/c/6/c/5/600_528230885.jpeg"
+  },
+  {
+    "event_id": "306786861",
+    "event_name": "Shift Left en Seguridad con GitHub Advanced Security - YouTube",
+    "event_link": "https://www.meetup.com/ghspain/events/306786861/",
+    "event_date": "03/19/2025 4:00:00 PM",
+    "event_image": "https://secure.meetupstatic.com/photos/event/c/1/0/e/600_526849422.jpeg"
+  },
+  {
+    "event_id": "304075362",
+    "event_name": "GitHub Universe 2024 - Watch Party",
+    "event_link": "https://www.meetup.com/ghspain/events/304075362/",
+    "event_date": "10/29/2024 4:00:00 PM",
+    "event_image": "https://secure.meetupstatic.com/photos/event/8/b/0/b/600_524135595.jpeg"
   }
 ]

@@ -2,20 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Timeline, Section, Link, Stack, SectionIntro, AnimationProvider, Animate } from '@primer/react-brand'
 import { Card } from './subcomponents/Card';
 import cardStyles from './css/Card.module.css'
-
-interface EventData {
-    event_id: string;
-    event_name: string;
-    event_link: string;
-    event_date: string;
-    event_image?: string;
-}
-
-// Module-level constants used throughout the component
-const DEFAULT_LOGO = `${process.env.PUBLIC_URL}/images/logos/svg/Meetup.svg`;
-const MIN_CARD_WIDTH = 320;
-const MAX_CARD_WIDTH = 900;
-const RESPONSIVE_BREAKPOINT = 640;
+import eventStyles from './css/EventSection.module.css'
+import { EVENT_CONFIG } from '../utils/events.constants'
+import { EventData, filterAndSortEvents, calculateResponsiveWidth } from '../utils/eventFilters'
 
 const TimelineSection: React.FC = () => {
     const [events, setEvents] = useState<EventData[]>([]);
@@ -44,7 +33,7 @@ const TimelineSection: React.FC = () => {
                 setEvents(eventsData);
                 // Measure natural widths of all event images and pick the max as default
                 try {
-                    const imageUrls = eventsData.map(e => e.event_image || DEFAULT_LOGO);
+                    const imageUrls = eventsData.map(e => e.event_image || EVENT_CONFIG.DEFAULT_LOGO);
                     const loadImage = (src: string) => new Promise<number>((resolve) => {
                         const i = new Image();
                         i.src = src;
@@ -53,7 +42,7 @@ const TimelineSection: React.FC = () => {
                     });
                     Promise.all(imageUrls.map(loadImage)).then(widths => {
                         const max = widths.reduce((a, b) => Math.max(a, b), 0) || 640;
-                        const clamped = Math.max(MIN_CARD_WIDTH, Math.min(MAX_CARD_WIDTH, max));
+                        const clamped = Math.max(EVENT_CONFIG.MIN_CARD_WIDTH, Math.min(EVENT_CONFIG.MAX_CARD_WIDTH, max));
                         setCardWidth(clamped);
                     }).catch(() => {
                         /* ignore */
@@ -92,19 +81,13 @@ const TimelineSection: React.FC = () => {
     // keep cardDisplayWidth in sync with cardWidth and viewport size
     useEffect(() => {
         const update = () => {
-            if (!cardWidth) {
-                setCardDisplayWidth('100%');
-                return;
-            }
             const vw = typeof window !== 'undefined' ? window.innerWidth : 9999;
-            // breakpoint for switching to responsive percentage
-            const breakpoint = RESPONSIVE_BREAKPOINT;
-            if (vw < breakpoint) {
-                // use percentage on small screens
-                setCardDisplayWidth('90%');
-            } else {
-                setCardDisplayWidth(`${cardWidth}px`);
-            }
+            const newWidth = calculateResponsiveWidth(
+                cardWidth,
+                vw,
+                EVENT_CONFIG.RESPONSIVE_BREAKPOINT
+            );
+            setCardDisplayWidth(newWidth);
         };
 
         update();
@@ -173,20 +156,19 @@ const TimelineSection: React.FC = () => {
             </SectionIntro>
             <Stack padding="spacious" alignItems="center" gap="spacious">
                 {(() => {
-                    const now = new Date();
-                    const upcomingEvents = events
-                        .filter(event => new Date(event.event_date) > now)
-                        .sort((a, b) => new Date(a.event_date).getTime() - new Date(b.event_date).getTime());
-                    const pastEvents = events
-                        .filter(event => new Date(event.event_date) <= now)
-                        .sort((a, b) => new Date(b.event_date).getTime() - new Date(a.event_date).getTime());
+                    const { upcomingEvents, pastEvents } = filterAndSortEvents(events);
 
                     return (
                         <>
                             {upcomingEvents.length > 0 && (
                                 <>
-                                    <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>Próximos eventos</h3>
-                                    <div style={{ width: cardDisplayWidth || '100%', maxWidth: 900, margin: '0 auto' }}>
+                                    <h3 className={eventStyles.sectionTitle}>
+                                        {EVENT_CONFIG.UPCOMING_TITLE}
+                                    </h3>
+                                    <div 
+                                        className={eventStyles.upcomingContainer}
+                                        style={{ width: cardDisplayWidth || '100%' }}
+                                    >
                                         <Stack
                                             direction="vertical"
                                             padding="spacious"
@@ -199,12 +181,12 @@ const TimelineSection: React.FC = () => {
                                                     <Card
                                                         href={event.event_link}
                                                         hasBorder
-                                                        ctaText="Ver evento"
+                                                        ctaText={EVENT_CONFIG.CTA_TEXT}
                                                         align="center"
                                                         className={cardStyles['Card--event']}
                                                         style={{ width: cardDisplayWidth || '100%', margin: '0 auto' }}
                                                     >
-                                                        <Card.Image src={event.event_image || DEFAULT_LOGO} alt={event.event_name} />
+                                                        <Card.Image src={event.event_image || EVENT_CONFIG.DEFAULT_LOGO} alt={event.event_name} />
                                                         <Card.Heading>{event.event_name}</Card.Heading>
                                                         <Card.Description>{formatDate(event.event_date)}</Card.Description>
                                                     </Card>
@@ -216,9 +198,11 @@ const TimelineSection: React.FC = () => {
                             )}
                             {pastEvents.length > 0 && (
                                 <>
-                                    <div style={{ width: cardDisplayWidth || '100%', maxWidth: 900, margin: '2rem auto 0 auto' }}>
-                                        <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>Eventos pasados</h3>
-                                        <div style={{ width: '100%', margin: '0 auto', paddingLeft: 0, display: 'flex', justifyContent: 'center' }}>
+                                    <div className={eventStyles.pastEventsContainer}>
+                                        <h3 className={eventStyles.sectionTitle}>
+                                            {EVENT_CONFIG.PAST_TITLE}
+                                        </h3>
+                                        <div className={eventStyles.timelineWrapper}>
                                             <Timeline fullWidth={false}>
                                                 {pastEvents.map((event) => (
                                                     <Timeline.Item key={event.event_id}>

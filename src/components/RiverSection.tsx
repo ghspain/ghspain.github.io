@@ -1,31 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { Section, Stack, AnimationProvider, SectionIntro } from '@primer/react-brand';
+import { useState, useEffect } from 'react'
+import { Section, Stack, AnimationProvider, SectionIntro } from '@primer/react-brand'
 import type { Organizer } from '../types/organizer'
 import { OrganizerList } from './subcomponents/OrganizerList'
 
+interface LoadState {
+  data: Organizer[]
+  loading: boolean
+  error: string | null
+}
 
 const RiverSection: React.FC = () => {
-  const [organizers, setOrganizers] = useState<Organizer[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [state, setState] = useState<LoadState>({
+    data: [],
+    loading: true,
+    error: null,
+  })
 
   useEffect(() => {
     let mounted = true
-    const load = async () => {
+
+    const loadOrganizers = async () => {
       try {
-        const res = await fetch(`${process.env.PUBLIC_URL}/data/organizers.json`)
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const data: Organizer[] = await res.json()
-        if (mounted) setOrganizers(data)
+        const url = `${process.env.PUBLIC_URL}/data/organizers.json`
+        const response = await fetch(url)
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: Failed to load organizers`)
+        }
+        
+        const organizers: Organizer[] = await response.json()
+        
+        if (mounted) {
+          setState({ data: organizers, loading: false, error: null })
+        }
       } catch (err) {
-        if (mounted) setError(err instanceof Error ? err.message : String(err))
-      } finally {
-        if (mounted) setLoading(false)
+        if (mounted) {
+          const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+          setState({ data: [], loading: false, error: errorMessage })
+        }
       }
     }
-    load()
-    return () => { mounted = false }
+
+    loadOrganizers()
+
+    return () => {
+      mounted = false
+    }
   }, [])
+
+  const { data, loading, error } = state
 
   return (
     <Section paddingBlockStart="none" paddingBlockEnd="spacious" id="quienes-somos">
@@ -38,18 +61,13 @@ const RiverSection: React.FC = () => {
 
       <Stack>
         <AnimationProvider>
-          {loading ? (
-            <div>Cargando…</div>
-          ) : error ? (
-            <div>Error: {error}</div>
-          ) : (
-            <OrganizerList organizers={organizers} />
-          )}
+          {loading && <div>Cargando…</div>}
+          {error && <div>Error: {error}</div>}
+          {!loading && !error && <OrganizerList organizers={data} />}
         </AnimationProvider>
       </Stack>
     </Section>
-  );
-};
+  )
+}
 
-export default RiverSection;
-
+export default RiverSection

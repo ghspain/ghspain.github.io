@@ -1,0 +1,49 @@
+name: Sync Meetup Events
+
+on:
+  schedule:
+    # Ejecutar diariamente a las 6 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Permitir ejecución manual
+
+jobs:
+  sync-events:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install action dependencies
+      run: |
+        cd actions/sync-meetup-events
+        npm ci
+
+    - name: Sync events from Meetup
+      uses: ./actions/sync-meetup-events
+      with:
+        json-path: 'public/data/issues.json'
+
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Commit and push changes
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add public/data/issues.json
+        git commit -m "Sync events from Meetup [automated]"
+        git push

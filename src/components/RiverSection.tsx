@@ -17,7 +17,12 @@ const RiverSection: React.FC = () => {
       <Stack>
         <AnimationProvider>
           {loading && <div role="status" aria-live="polite">Cargando…</div>}
-          {error && <div role="alert">Error: {error}</div>}
+          {error && (
+            <div role="alert">
+              <strong>Lo sentimos</strong>
+              <p>No pudimos cargar los organizadores. Por favor intenta más tarde.</p>
+            </div>
+          )}
           {!loading && !error && <OrganizerList organizers={data} />}
         </AnimationProvider>
       </Stack>

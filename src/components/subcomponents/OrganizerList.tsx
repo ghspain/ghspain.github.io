@@ -1,15 +1,11 @@
 import type { Organizer } from '../../types/organizer'
+import { getOrganizerImageUrl } from '../../services/organizers'
 import { River } from './River'
 import { Heading, Text, Link } from '@primer/react-brand'
 
 export function OrganizerList({ organizers }: { organizers: Organizer[] }) {
-  const getImageUrl = (imgPath: string): string => {
-    if (imgPath.startsWith('http://') || imgPath.startsWith('https://') || imgPath.startsWith('/')) {
-      return imgPath
-    }
-    const publicUrl = process.env.PUBLIC_URL || ''
-    const basePath = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl
-    return `${basePath}/${imgPath}`
+  if (!organizers || organizers.length === 0) {
+    return <div>No organizers available</div>
   }
 
   return (
@@ -25,7 +21,7 @@ export function OrganizerList({ organizers }: { organizers: Organizer[] }) {
             imageTextRatio="40:60"
           >
             <River.Visual>
-              <img src={getImageUrl(organizer.img)} alt={`Profile photo of ${organizer.name}`} />
+              <img src={getOrganizerImageUrl(organizer.img)} alt={organizer.name} />
             </River.Visual>
             <River.Content animate={animationDirection}>
               <Heading>{organizer.name}</Heading>

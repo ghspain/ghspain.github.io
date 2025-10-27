@@ -9,6 +9,25 @@ interface LoadState {
   error: string | null
 }
 
+const buildDataUrl = (): string => {
+  const publicUrl = (typeof process.env.PUBLIC_URL === 'string' && process.env.PUBLIC_URL.trim() !== '' 
+    ? process.env.PUBLIC_URL 
+    : '')
+  const basePath = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl
+  return `${basePath}/data/organizers.json`
+}
+
+const fetchOrganizers = async (): Promise<Organizer[]> => {
+  const url = buildDataUrl()
+  const response = await fetch(url)
+  
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: Failed to load organizers`)
+  }
+  
+  return response.json()
+}
+
 const RiverSection: React.FC = () => {
   const [state, setState] = useState<LoadState>({
     data: [],
@@ -21,17 +40,7 @@ const RiverSection: React.FC = () => {
 
     const loadOrganizers = async () => {
       try {
-        const publicUrl = (typeof process.env.PUBLIC_URL === 'string' && process.env.PUBLIC_URL.trim() !== '' ? process.env.PUBLIC_URL : '')
-        const basePath = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl
-        const url = `${basePath}/data/organizers.json`
-        
-        const response = await fetch(url)
-        
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: Failed to load organizers`)
-        }
-        
-        const organizers: Organizer[] = await response.json()
+        const organizers = await fetchOrganizers()
         
         if (mounted) {
           setState({ data: organizers, loading: false, error: null })

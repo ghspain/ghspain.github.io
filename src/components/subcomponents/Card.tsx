@@ -1,7 +1,7 @@
 import React, {RefObject, forwardRef} from 'react'
 import {isFragment} from 'react-is'
 import clsx from 'clsx'
-import {Heading, HeadingProps, Text, useTheme, CardSkewEffect, Image, type ImageProps, Label, LabelColors} from '@primer/react-brand/lib'
+import {Heading, HeadingProps, Text, useTheme, CardSkewEffect, Image, type ImageProps, Label, LabelColors, Button} from '@primer/react-brand/lib'
 import {Icon, type IconProps} from '@primer/react-brand/'
 import type {BaseProps} from '@primer/react-brand/lib/component-helpers'
 import {useProvidedRefOrCreate} from './useRef'
@@ -54,6 +54,10 @@ export type CardProps = {
    * Changes the cta text of the card
    * */
   ctaText?: string
+  /**
+   * Controls whether the CTA button is rendered. Event cards should keep it; copy cards should set this to false.
+   */
+  showCTA?: boolean
   hasBorder?: boolean
   /**
    * Fills the width of the parent container and removes the default max-width.
@@ -84,6 +88,10 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
       hasBorder = false,
       style,
       variant = 'default',
+        /**
+         * Controls whether the CTA button is rendered. Event cards should keep it; copy cards should set this to false.
+         */
+        showCTA = true,
       ...props
     },
     ref,
@@ -154,8 +162,16 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
           {cardLabel}
           {cardDescription}
 
-          <div className={styles.Card__action}>
-          </div>
+            <div className={styles.Card__action}>
+              {showCTA && ctaText && href && (
+                <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  {/* Match Hero.PrimaryAction styling: primary variant, medium size, same entrance animation */}
+                  <Button variant="primary" size="medium" animate="scale-in-down">
+                    {ctaText}
+                  </Button>
+                </a>
+              )}
+            </div>
         </div>
       </WrapperComponent>
     )
@@ -264,3 +280,11 @@ export const Card = Object.assign(CardRoot, {
   Heading: CardHeading,
   Description: CardDescription,
 })
+
+// Convenience components: Event cards keep the CTA, Copy cards hide it.
+export const CardEvent = (props: CardProps) => <CardRoot {...props} showCTA={true} />
+export const CardCopy = (props: CardProps) => <CardRoot {...props} showCTA={false} />
+
+// Also keep runtime aliases on the Card object for backwards compatibility
+;(Card as any).Event = CardEvent
+;(Card as any).Copy = CardCopy

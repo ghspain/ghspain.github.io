@@ -223,11 +223,12 @@
   z-index: -1;
 }
 
-/* Variant used for events to enforce uniform size and image behavior */
+/* Variant used for events to enforce uniform size and image behavior (consolidated) */
 
 .Card--event {
   width: 100%;
-  max-width: 640px;
+  /* let inline styles from JS control visual width; keep centered */
+  max-width: none;
   min-height: 320px;
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.10);
   display: flex;
@@ -237,29 +238,27 @@
   overflow: hidden;
   background-clip: padding-box;
   transition: transform 220ms var(--brand-Card-animation-easing), box-shadow 220ms var(--brand-Card-animation-easing);
+  margin: 0 auto 20px auto;
+  box-sizing: border-box;
+  border: 1px solid transparent;
 }
 
 .Card--event:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  border-color: rgba(99,102,241,0.06);
 }
 
 .Card--event .Card__image {
   height: 260px;
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Make the image slightly inset from the card edges so the card has more presence */
-.Card--event .Card__image {
   width: calc(100% - 40px);
   margin: 12px auto 0 auto;
   border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  order: -1;
 }
 
-/* Ensure the inner image covers the box and is consistent across cards */
 .Card--event .Card__image img,
 .Card--event .Card__image picture,
 .Card--event .Card__image span {
@@ -269,20 +268,6 @@
   display: block;
 }
 
-/* Ensure the card itself uses the same fixed max-width and centers inside the stack */
-.Card--event {
-  /* Allow inline styles from JS to set width; keep centered and consistent spacing */
-  max-width: none;
-  margin: 0 auto 20px auto;
-  box-sizing: border-box;
-}
-
-/* Visually place the image above the heading even if DOM order differs */
-.Card--event .Card__image {
-  order: -1;
-}
-
-/* Make the inner card a column layout so image/heading/description stack naturally */
 .Card.Card--event {
   display: flex;
   flex-direction: column;
@@ -290,48 +275,21 @@
   align-items: stretch;
 }
 
-/* CTA / action styling */
 .Card.Card--event .Card__action {
   display: flex;
   justify-content: center;
   padding: var(--base-size-12) var(--base-size-20) var(--base-size-20) var(--base-size-20);
 }
 
-/* subtle border accent on focus/hover */
-.Card.Card--event {
-  border: 1px solid transparent;
-}
-.Card.Card--event:focus-within,
-.Card.Card--event:hover {
-  border-color: rgba(99,102,241,0.06);
-}
-
-.Card--event .Card__image img,
-.Card--event .Card__image picture,
-.Card--event .Card__image span {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Make the heading sit visually close to the image and stand out */
 .Card--event .Card__heading {
   margin: var(--base-size-16) var(--base-size-20) 0 var(--base-size-20);
-  font-size: 1.125rem;
+  font-size: 1.05rem;
   line-height: 1.2;
   font-weight: 600;
 }
 
 .Card--event .Card__description {
   margin: var(--base-size-8) var(--base-size-20) var(--base-size-20) var(--base-size-20);
-}
-
-.Card--event .Card__heading {
-  font-size: 1.05rem;
-}
-
-.Card--event .Card__description {
   color: var(--brand-color-text-muted);
 }
 

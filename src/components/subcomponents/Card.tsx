@@ -17,7 +17,6 @@ import '@primer/brand-primitives/lib/design-tokens/css/tokens/functional/compone
  * Main stylesheet (as a CSS Module)
  */
 import styles from '../css/Card.module.css'
-import stylesLink from '../Link/Link.module.css'
 
 export const CardVariants = ['default', 'minimal', 'torchlight'] as const
 
@@ -25,13 +24,13 @@ export const CardIconColors = Colors
 
 export const defaultCardIconColor = CardIconColors[0]
 
-export type CardVariants = (typeof CardVariants)[number]
+export type CardVariant = (typeof CardVariants)[number]
 
 export type CardProps = {
   /**
    * Specify alternative card appearance
    */
-  variant?: CardVariants
+  variant?: CardVariant
   /**
    * Valid children include Card.Image, Card.Heading, and Card.Description
    */
@@ -88,9 +87,6 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
       hasBorder = false,
       style,
       variant = 'default',
-        /**
-         * Controls whether the CTA button is rendered. Event cards should keep it; copy cards should set this to false.
-         */
         showCTA = true,
       ...props
     },
@@ -145,7 +141,6 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
           className={clsx(
             styles.Card,
             disableAnimation && styles['Card--disableAnimation'],
-            styles[`Card--colorMode-${colorMode}`],
             styles[`Card--variant-${variant}`],
             cardIcon && styles['Card--icon'],
             showBorder && styles['Card--border'],

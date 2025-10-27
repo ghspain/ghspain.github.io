@@ -11,6 +11,12 @@ interface EventData {
     event_image?: string;
 }
 
+// Module-level constants used throughout the component
+const DEFAULT_LOGO = `${process.env.PUBLIC_URL}/images/logos/svg/Meetup.svg`;
+const MIN_CARD_WIDTH = 320;
+const MAX_CARD_WIDTH = 900;
+const RESPONSIVE_BREAKPOINT = 640;
+
 const TimelineSection: React.FC = () => {
     const [events, setEvents] = useState<EventData[]>([]);
     const [loading, setLoading] = useState(true);
@@ -34,11 +40,11 @@ const TimelineSection: React.FC = () => {
 
                 console.log('Loaded events:', eventsData.length); // Debug log
 
-                // No ordenar aquí, lo haremos después de filtrar
+                // Don't sort here; we'll sort after filtering
                 setEvents(eventsData);
                 // Measure natural widths of all event images and pick the max as default
                 try {
-                    const imageUrls = eventsData.map(e => e.event_image || `${process.env.PUBLIC_URL}/images/logos/svg/Meetup.svg`);
+                    const imageUrls = eventsData.map(e => e.event_image || DEFAULT_LOGO);
                     const loadImage = (src: string) => new Promise<number>((resolve) => {
                         const i = new Image();
                         i.src = src;
@@ -47,7 +53,7 @@ const TimelineSection: React.FC = () => {
                     });
                     Promise.all(imageUrls.map(loadImage)).then(widths => {
                         const max = widths.reduce((a, b) => Math.max(a, b), 0) || 640;
-                        const clamped = Math.max(320, Math.min(900, max));
+                        const clamped = Math.max(MIN_CARD_WIDTH, Math.min(MAX_CARD_WIDTH, max));
                         setCardWidth(clamped);
                     }).catch(() => {
                         /* ignore */
@@ -92,7 +98,7 @@ const TimelineSection: React.FC = () => {
             }
             const vw = typeof window !== 'undefined' ? window.innerWidth : 9999;
             // breakpoint for switching to responsive percentage
-            const breakpoint = 640;
+            const breakpoint = RESPONSIVE_BREAKPOINT;
             if (vw < breakpoint) {
                 // use percentage on small screens
                 setCardDisplayWidth('90%');
@@ -198,7 +204,7 @@ const TimelineSection: React.FC = () => {
                                                         className={cardStyles['Card--event']}
                                                         style={{ width: cardDisplayWidth || '100%', margin: '0 auto' }}
                                                     >
-                                                        <Card.Image src={event.event_image || `${process.env.PUBLIC_URL}/images/logos/svg/Meetup.svg`} alt={event.event_name} />
+                                                        <Card.Image src={event.event_image || DEFAULT_LOGO} alt={event.event_name} />
                                                         <Card.Heading>{event.event_name}</Card.Heading>
                                                         <Card.Description>{formatDate(event.event_date)}</Card.Description>
                                                     </Card>

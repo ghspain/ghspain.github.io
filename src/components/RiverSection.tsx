@@ -21,7 +21,10 @@ const RiverSection: React.FC = () => {
 
     const loadOrganizers = async () => {
       try {
-        const url = `${process.env.PUBLIC_URL}/data/organizers.json`
+        const publicUrl = (typeof process.env.PUBLIC_URL === 'string' && process.env.PUBLIC_URL.trim() !== '' ? process.env.PUBLIC_URL : '')
+        const basePath = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl
+        const url = `${basePath}/data/organizers.json`
+        
         const response = await fetch(url)
         
         if (!response.ok) {
@@ -61,8 +64,8 @@ const RiverSection: React.FC = () => {
 
       <Stack>
         <AnimationProvider>
-          {loading && <div>Cargando…</div>}
-          {error && <div>Error: {error}</div>}
+          {loading && <div role="status">Cargando…</div>}
+          {error && <div role="alert">Error: {error}</div>}
           {!loading && !error && <OrganizerList organizers={data} />}
         </AnimationProvider>
       </Stack>

@@ -2,28 +2,28 @@
   {
     "id": "svg153",
     "name": "Sergio Valverde",
-    "img": "/images/organizers/svg153.webp",
+    "img": "images/organizers/svg153.webp",
     "bio": "Organizador. Ingeniero de Plataforma en Lunik y organizador de GitHub Community Spain, con experiencia en infraestructura, SRE y automatización. Apasionado por DevOps, la experiencia del desarrollador y el enfoque Everything as Code.",
     "link": "https://github.com/svg153"
   },
   {
     "id": "lfraile",
     "name": "Luis Fraile",
-    "img": "/images/organizers/lfraile.webp",
+    "img": "images/organizers/lfraile.webp",
     "bio": "Co-organizador. CTO en B!Play y consultor DevOps y ALM en Plain Concepts.",
     "link": "https://github.com/lfraile"
   },
   {
     "id": "micheloni",
     "name": "Leo Micheloni",
-    "img": "/images/organizers/micheloni.webp",
+    "img": "images/organizers/micheloni.webp",
     "bio": "Desarrollador software. Bebedor de mate y matador de teclas. MVP en cada partido que juega.",
     "link": "https://github.com/leomicheloni"
   },
   {
     "id": "alex",
     "name": "Alex Cerezo",
-    "img": "/images/organizers/alex.webp",
+    "img": "images/organizers/alex.webp",
     "bio": "Co-Organizador. Ingeniero de Software y especialista en IA. Team Lead especializado en LLMs y desarrollo full-stack.",
     "link": "https://github.com/alexcerezo"
   }

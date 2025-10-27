@@ -3,6 +3,15 @@ import { River } from './River'
 import { Heading, Text, Link } from '@primer/react-brand'
 
 export function OrganizerList({ organizers }: { organizers: Organizer[] }) {
+  const getImageUrl = (imgPath: string): string => {
+    if (imgPath.startsWith('http://') || imgPath.startsWith('https://') || imgPath.startsWith('/')) {
+      return imgPath
+    }
+    const publicUrl = process.env.PUBLIC_URL || ''
+    const basePath = publicUrl.endsWith('/') ? publicUrl.slice(0, -1) : publicUrl
+    return `${basePath}/${imgPath}`
+  }
+
   return (
     <>
       {organizers.map((organizer, index) => {
@@ -16,7 +25,7 @@ export function OrganizerList({ organizers }: { organizers: Organizer[] }) {
             imageTextRatio="40:60"
           >
             <River.Visual>
-              <img src={organizer.img} alt={organizer.name} />
+              <img src={getImageUrl(organizer.img)} alt={organizer.name} />
             </River.Visual>
             <River.Content animate={animationDirection}>
               <Heading>{organizer.name}</Heading>

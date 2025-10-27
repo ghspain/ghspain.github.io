@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@types/react-is": "^19.2.0",
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "cheerio": "^1.0.0"
   }
 }

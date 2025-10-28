@@ -12,7 +12,8 @@
 
 .upcomingContainer {
   width: 100%;
-  max-width: 900px;
+  /* Match section intro width by not constraining container; the card itself controls visual width */
+  max-width: none;
   margin: 0 auto;
   box-sizing: border-box;
 }

@@ -189,7 +189,10 @@
 
 .Card__action,
 .Card__action span {
-  color: var(--brand-Link-color-accent);
+  /* Don't force link accent color here; let the actual button component define its own text color
+     so it matches Hero.PrimaryAction styling (black text on light button).
+  */
+  color: inherit;
 }
 
 .Card--skew {
@@ -259,10 +262,11 @@
 }
 
 .Card--event .Card__image {
-  height: 260px;
-  width: calc(100% - 40px);
-  margin: 12px auto 0 auto;
-  border-radius: 10px;
+  /* Make the image span the full card width, let height follow aspect ratio */
+  height: auto;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
   order: -1;
@@ -272,8 +276,8 @@
 .Card--event .Card__image picture,
 .Card--event .Card__image span {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 

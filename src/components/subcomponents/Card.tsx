@@ -1,7 +1,8 @@
 import React, {RefObject, forwardRef} from 'react'
 import {isFragment} from 'react-is'
 import clsx from 'clsx'
-import {Heading, HeadingProps, Text, useTheme, CardSkewEffect, Image, type ImageProps, Label, LabelColors, Button} from '@primer/react-brand/lib'
+import {Heading, HeadingProps, Text, useTheme, CardSkewEffect, Image, type ImageProps, Label, LabelColors} from '@primer/react-brand/lib'
+import { Hero } from '@primer/react-brand'
 import {Icon, type IconProps} from '@primer/react-brand/'
 import type {BaseProps} from '@primer/react-brand/lib/component-helpers'
 import {useProvidedRefOrCreate} from './useRef'
@@ -66,6 +67,14 @@ export type CardProps = {
    * Aligns the card content
    */
   align?: 'start' | 'center'
+  /**
+   * Anchor target for the heading link and CTA link (e.g., '_blank').
+   */
+  target?: React.HTMLAttributeAnchorTarget
+  /**
+   * Anchor rel for the heading link and CTA link (e.g., 'noopener noreferrer').
+   */
+  rel?: string
 } & Omit<BaseProps<HTMLDivElement>, 'animate'> &
   Omit<React.ComponentPropsWithoutRef<'div'>, 'onMouseEnter' | 'onMouseLeave' | 'onFocus' | 'onBlur'> &
   Pick<React.ComponentPropsWithoutRef<'a'>, 'onMouseEnter' | 'onMouseLeave' | 'onFocus' | 'onBlur'>
@@ -84,6 +93,8 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
       disableAnimation = false,
       fullWidth = false,
       href,
+      target,
+      rel,
       hasBorder = false,
       style,
       variant = 'default',
@@ -109,6 +120,8 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
       if (isCardHeading(child)) {
         acc.cardHeading = React.cloneElement(child, {
           href,
+          target,
+          rel,
         })
       } else if (isCardImage(child)) {
         acc.cardImage = child
@@ -159,12 +172,13 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
 
             <div className={styles.Card__action}>
               {showCTA && ctaText && href && (
-                <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  {/* Match Hero.PrimaryAction styling: primary variant, medium size, same entrance animation */}
-                  <Button variant="primary" size="medium" animate="scale-in-down">
-                    {ctaText}
-                  </Button>
-                </a>
+                // Use the same component as HeroSection to perfectly match styling
+                <Hero.PrimaryAction
+                  href={href}
+                  animate="scale-in-down"
+                >
+                  {ctaText}
+                </Hero.PrimaryAction>
               )}
             </div>
         </div>
@@ -221,7 +235,7 @@ type CardHeadingProps = BaseProps<HTMLHeadingElement> & {
   React.ComponentPropsWithoutRef<'a'>
 
 const CardHeading = forwardRef<HTMLHeadingElement, CardHeadingProps>(
-  ({children, as = 'h3', className, href, onMouseEnter, onMouseLeave, onBlur, onFocus, ...rest}, ref) => {
+  ({children, as = 'h3', className, href, target, rel, onMouseEnter, onMouseLeave, onBlur, onFocus, ...rest}, ref) => {
     return (
       <Heading size="subhead-large" className={clsx(styles.Card__heading, className)} ref={ref} as={as} {...rest}>
         <a
@@ -231,6 +245,8 @@ const CardHeading = forwardRef<HTMLHeadingElement, CardHeadingProps>(
           onMouseLeave={onMouseLeave}
           onBlur={onBlur}
           onFocus={onFocus}
+          target={target}
+          rel={rel}
         >
           {children}
         </a>

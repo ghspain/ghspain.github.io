@@ -81,7 +81,7 @@ const socialLinkData = {
 } as const
 
 type SocialLinkName = keyof typeof socialLinkData
-type SocialLink = (typeof socialLinkData)[SocialLinkName]
+// type SocialLinkInfo = (typeof socialLinkData)[SocialLinkName] (not used)
 
 const socialLinkNames = Object.keys(socialLinkData) as SocialLinkName[]
 
@@ -112,13 +112,8 @@ function Root({
   // find Footer.Footnotes children
   const footerFootnoteChild = () => {
     const footnotes = React.Children.toArray(children).find(child => {
-      if (!React.isValidElement(child)) {
-        return false
-      }
-
-      if (child.type && child.type === Footnotes) {
-        return true
-      }
+      if (!React.isValidElement(child)) return false
+      return child.type === Footnotes
     })
     return footnotes
   }
@@ -128,14 +123,7 @@ function Root({
    * If more than 5 links are required, we should encourage usage of Footer instead.
    */
   const LinkChildren = React.Children.toArray(children)
-    .filter(child => {
-      // if not valid element
-      if (React.isValidElement(child)) {
-        if (child.type === Link) {
-          return child
-        }
-      }
-    })
+    .filter(child => React.isValidElement(child) && child.type === Link)
     .slice(0, 5)
 
   const currentYear = new Date().getFullYear()

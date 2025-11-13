@@ -1,0 +1,14 @@
+name: 'Sync Meetup Events'
+description: 'Sync events from Meetup.com to JSON file'
+inputs:
+  json-path:
+    description: 'Path to the JSON file to update'
+    required: false
+    default: 'public/data/issues.json'
+  meetup-org:
+    description: 'Meetup organization (slug) to sync events from, e.g. ghspain'
+    required: false
+    default: 'ghspain'
+runs:
+  using: 'node20'
+  main: 'index.js'

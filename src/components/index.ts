@@ -4,4 +4,5 @@ export { default as CTASection } from './CTASection';
 export { default as CardsSection } from './CardsSection';
 export { default as RiverSection } from './RiverSection';
 export { default as TimelineSection } from './TimelineSection';
+export { default as RaffleSection } from './RaffleSection';
 export { MinimalFooter } from './subcomponents/MinimalFooter';

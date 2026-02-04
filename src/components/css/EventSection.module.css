@@ -1,0 +1,48 @@
+/* EventSection.module.css */
+/* Centralized styles for the events section */
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--brand-color-text-default, inherit);
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.upcomingContainer {
+  width: 100%;
+  /* Match section intro width by not constraining container; the card itself controls visual width */
+  max-width: none;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.pastEventsContainer {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 0 auto;
+  box-sizing: border-box;
+}
+
+.timelineWrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .upcomingContainer,
+  .pastEventsContainer {
+    padding: 0 1rem;
+  }
+}

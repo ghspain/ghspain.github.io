@@ -3,5 +3,6 @@ export { default as HeroSection } from './HeroSection';
 export { default as CTASection } from './CTASection';
 export { default as CardsSection } from './CardsSection';
 export { default as RiverSection } from './RiverSection';
-export { default as TimelineSection } from './TimelineSection';
+export { default as PastEventsSection } from './PastEventsSection';
+export { default as NextEventsSection } from './NextEventsSection';
 export { MinimalFooter } from './subcomponents/MinimalFooter';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section, Stack, Animate, SectionIntro } from '@primer/react-brand';
-import { Card } from './subcomponents/Card';
+import { Card, CardCopy } from './subcomponents/Card';
 
 const CardsSection: React.FC = () => {
   return (
@@ -22,22 +22,22 @@ const CardsSection: React.FC = () => {
 
       >
         <Animate animate="scale-in-up">
-          <Card href="https://www.meetup.com/ghspain" hasBorder ctaText="Saber más" fullWidth align="center">
+          <CardCopy href="https://www.meetup.com/ghspain" hasBorder fullWidth align="center">
             <Card.Heading>Altruista y generosa</Card.Heading>
             <Card.Description>Nadie en la organización obtiene algún tipo de beneficio monetario de la misma. Queremos aportar valor al conjunto de la sociedad y al sector tecnológico con nuestros proyectos, nuestras ideas y nuestras experiencias.</Card.Description>
-          </Card>
+          </CardCopy>
         </Animate>
         <Animate animate="scale-in-up">
-          <Card href="https://www.meetup.com/ghspain" hasBorder ctaText="Saber más" fullWidth align="center">
+          <CardCopy href="https://www.meetup.com/ghspain" hasBorder fullWidth align="center">
             <Card.Heading>Abierta y participativa</Card.Heading>
             <Card.Description>Cualquier persona que quiera colaborar y ayudar a dinamizar nuestra comunidad es bienvenida. Queremos expandir nuestra red por diferentes lugares y ciudades de España, para llegar a más personas y crear más oportunidades.</Card.Description>
-          </Card>
+          </CardCopy>
         </Animate>
         <Animate animate="scale-in-up">
-          <Card href="https://www.meetup.com/ghspain" hasBorder ctaText="Saber más" fullWidth align="center">
+          <CardCopy href="https://www.meetup.com/ghspain" hasBorder fullWidth align="center">
             <Card.Heading>Basada en Github</Card.Heading>
             <Card.Description>GitHub nos permite gestionar nuestros proyectos, documentar nuestro trabajo y compartir nuestro código con otros desarrolladores. Reconocemos el valor de GitHub como herramienta, como filosofía y como un pilar fundamental para el desarrollo.</Card.Description>
-          </Card>
+          </CardCopy>
         </Animate>
       </Stack>
     </Section>

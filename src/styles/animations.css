@@ -1,0 +1,233 @@
+/* Animations & Transitions */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation Utility Classes */
+
+.animate-fade-in {
+  animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp var(--duration-normal) var(--ease-out) forwards;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown var(--duration-normal) var(--ease-out) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft var(--duration-slow) var(--ease-out) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--duration-slow) var(--ease-out) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--duration-normal) var(--ease-out) forwards;
+}
+
+.animate-pulse {
+  animation: pulse var(--duration-slower) infinite;
+}
+
+/* Stagger Animation Helper */
+
+.animate-stagger > * {
+  animation: slideInUp var(--duration-slow) var(--ease-out) backwards;
+}
+
+.animate-stagger > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.animate-stagger > *:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.animate-stagger > *:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.animate-stagger > *:nth-child(4) {
+  animation-delay: 300ms;
+}
+
+.animate-stagger > *:nth-child(5) {
+  animation-delay: 400ms;
+}
+
+.animate-stagger > *:nth-child(n + 6) {
+  animation-delay: 500ms;
+}
+
+/* Loading Skeleton */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--ds-bg-muted) 0%,
+    var(--ds-bg-hover) 50%,
+    var(--ds-bg-muted) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Smooth Transitions */
+
+.transition-smooth {
+  transition: var(--transition-normal);
+}
+
+.transition-fast {
+  transition: var(--transition-fast);
+}
+
+.transition-slow {
+  transition: var(--transition-slow);
+}
+
+/* Hover Effects */
+
+.hover-lift {
+  transition: var(--transition-fast);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hover-glow {
+  transition: var(--transition-fast);
+}
+
+[data-color-mode='dark'] .hover-glow:hover {
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+}
+
+[data-color-mode='light'] .hover-glow:hover {
+  box-shadow: 0 0 20px rgba(9, 105, 218, 0.2);
+}
+
+.hover-opacity {
+  transition: var(--transition-fast);
+}
+
+.hover-opacity:hover {
+  opacity: 0.8;
+}
+
+/* Focus Visible */
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--ds-accent-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+/* Disable Animations for Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -22,6 +22,13 @@ const socialLinkData = {
     iconWidth: 20,
     iconHeight: 16,
   },
+  luma: {
+    fullName: 'Luma',
+    url: 'https://lu.ma/ghspain',
+    icon: `${process.env.PUBLIC_URL}/images/logos/svg/Luma.svg`,
+    iconWidth: 20,
+    iconHeight: 20,
+  },
   meetup: {
     fullName: 'MeetUp',
     url: 'https://www.meetup.com/ghspain',

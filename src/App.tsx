@@ -40,7 +40,7 @@ function App() {
         <CTASection />
         <TimelineSection />
         <RiverSection />
-        <MinimalFooter socialLinks={["github", "linkedin", "youtube", "x", "meetup"]} />
+        <MinimalFooter socialLinks={["github", "linkedin", "youtube", "x", "meetup", "luma"]} />
       </div>
     </ThemeProvider >
   )

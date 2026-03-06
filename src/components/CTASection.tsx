@@ -12,6 +12,7 @@ const CTASection: React.FC = () => {
             Queremos crear un espacio abierto, inclusivo y diverso donde podamos expresarnos, inspirarnos y crecer juntos. ¡Únete a nosotros y sé parte de nuestra comunidad!
           </CTABanner.Description>
           <CTABanner.ButtonGroup>
+              <Button as="a" href="https://lu.ma/ghspain" animate="scale-in-up">Calendario</Button>
               <Button as="a" href="https://www.meetup.com/ghspain" animate="scale-in-up">Meetup</Button>
               <Button as="a" href="https://www.linkedin.com/company/ghspain/" animate="scale-in-up">LinkedIn</Button>
           </CTABanner.ButtonGroup>

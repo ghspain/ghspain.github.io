@@ -8,7 +8,7 @@ const Navigation: React.FC = () => {
       <AnchorNav.Link href="#que-hacemos">¿Qué hacemos?</AnchorNav.Link>
       <AnchorNav.Link href="#eventos">Eventos</AnchorNav.Link>
       <AnchorNav.Link href="#quienes-somos">¿Quiénes somos?</AnchorNav.Link>
-      <AnchorNav.Action href="https://www.meetup.com/ghspain">Meet up</AnchorNav.Action>
+      <AnchorNav.Action href="https://lu.ma/ghspain">Calendario</AnchorNav.Action>
       <AnchorNav.SecondaryAction href="#" style={{ display: 'none' }}></AnchorNav.SecondaryAction>
     </AnchorNav>
   );

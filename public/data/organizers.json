@@ -24,7 +24,14 @@
     "id": "alex",
     "name": "Alex Cerezo",
     "img": "images/organizers/alex.webp",
-    "bio": "Co-Organizador. Ingeniero de Software y especialista en IA. Team Lead especializado en LLMs y desarrollo full-stack.",
+    "bio": "Co-Organizador. Ingeniero de Software y especialista en IA en Ericsson. Aprovecha el poco tiempo que tiene en impartir charlas y talleres.",
     "link": "https://github.com/alexcerezo"
+  },
+  {
+    "id": "erika",
+    "name": "Érika Cepeda",
+    "img": "images/organizers/erika.webp",
+    "bio": "Especialista en IA Generativa y Copilot Sales Specialist en Devoteam. Trabaja en la intersección entre tecnología, comunicación y adopción empresarial de IA, ayudando a las organizaciones a entender y aprovechar el potencial real de Copilot. Con trasfondo en comunicación y relaciones públicas, organiza y participa como speaker en eventos técnicos de Microsoft como Global AI Spain y Netcoreconf, conectando la innovación con su impacto en el día a día.",
+    "link": "https://github.com/ErikaCepedaSanabria"
   }
 ]

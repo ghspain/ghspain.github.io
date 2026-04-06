@@ -116,9 +116,7 @@ function Root({
         return false
       }
 
-      if (child.type && child.type === Footnotes) {
-        return true
-      }
+      return child.type && child.type === Footnotes
     })
     return footnotes
   }
@@ -130,11 +128,7 @@ function Root({
   const LinkChildren = React.Children.toArray(children)
     .filter(child => {
       // if not valid element
-      if (React.isValidElement(child)) {
-        if (child.type === Link) {
-          return child
-        }
-      }
+      return React.isValidElement(child) && child.type === Link
     })
     .slice(0, 5)
 
@@ -215,9 +209,9 @@ function Footnotes({ children, className }: PropsWithChildren<FootnoteProps>) {
   )
 }
 
-type SocialLinkProps = { name: SocialLinkName }
+type SocialLinkComponentProps = { name: SocialLinkName }
 
-const SocialLink = ({ name }: SocialLinkProps) => {
+const SocialLink = ({ name }: SocialLinkComponentProps) => {
   const link = socialLinkData[name]
   return (
     <li key={name}>

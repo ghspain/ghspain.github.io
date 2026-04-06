@@ -17,7 +17,6 @@ import '@primer/brand-primitives/lib/design-tokens/css/tokens/functional/compone
  * Main stylesheet (as a CSS Module)
  */
 import styles from '../css/Card.module.css'
-import stylesLink from '../Link/Link.module.css'
 
 export const CardVariants = ['default', 'minimal', 'torchlight'] as const
 

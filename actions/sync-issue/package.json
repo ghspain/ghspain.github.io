@@ -1,0 +1,12 @@
+{
+  "name": "sync-issue",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "cheerio": "^1.0.0"
+  }
+}

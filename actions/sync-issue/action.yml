@@ -1,0 +1,10 @@
+name: 'Sync Single Issue to JSON'
+description: 'Parse a GitHub issue and update public/data/issues.json with an event entry'
+inputs:
+  json-path:
+    description: 'Path to the JSON file to update'
+    required: false
+    default: 'public/data/issues.json'
+runs:
+  using: 'node20'
+  main: 'index.js'

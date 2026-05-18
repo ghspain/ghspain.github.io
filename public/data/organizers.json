@@ -3,6 +3,13 @@
     "id": "svg153",
     "name": "Sergio Valverde",
     "img": "images/organizers/svg153.webp",
+    "recognitions": [
+      {
+        "kind": "github-star",
+        "label": "GitHub Star",
+        "url": "https://stars.github.com/profiles/svg153/"
+      }
+    ],
     "bio": "Organizador. Ingeniero de Plataforma en Lunik y organizador de GitHub Community Spain, con experiencia en infraestructura, SRE y automatización. Apasionado por DevOps, la experiencia del desarrollador y el enfoque Everything as Code.",
     "link": "https://github.com/svg153"
   },
@@ -10,6 +17,13 @@
     "id": "lfraile",
     "name": "Luis Fraile",
     "img": "images/organizers/lfraile.webp",
+    "recognitions": [
+      {
+        "kind": "microsoft-mvp",
+        "label": "Microsoft MVP",
+        "url": "https://mvp.microsoft.com/en-US/MVP/profile/47f98fa8-3c9a-e411-93f2-9cb65495d3c4"
+      }
+    ],
     "bio": "Co-organizador. CTO en B!Play y consultor DevOps y ALM en Plain Concepts.",
     "link": "https://github.com/lfraile"
   },
@@ -17,6 +31,13 @@
     "id": "micheloni",
     "name": "Leo Micheloni",
     "img": "images/organizers/micheloni.webp",
+    "recognitions": [
+      {
+        "kind": "microsoft-mvp",
+        "label": "Microsoft MVP",
+        "url": "https://mvp.microsoft.com/en-US/MVP/profile/6067bce3-5ccb-e411-92e9-6c3be5a84144"
+      }
+    ],
     "bio": "Desarrollador software. Bebedor de mate y matador de teclas. MVP en cada partido que juega.",
     "link": "https://github.com/leomicheloni"
   },
@@ -31,6 +52,13 @@
     "id": "erika",
     "name": "Érika Cepeda",
     "img": "images/organizers/erika.webp",
+    "recognitions": [
+      {
+        "kind": "microsoft-mvp",
+        "label": "Microsoft MVP",
+        "url": "https://mvp.microsoft.com/en-US/activities/379908"
+      }
+    ],
     "bio": "Especialista en IA Generativa y Copilot Sales Specialist en Devoteam. Trabaja en la intersección entre tecnología, comunicación y adopción empresarial de IA, ayudando a las organizaciones a entender y aprovechar el potencial real de Copilot. Con trasfondo en comunicación y relaciones públicas, organiza y participa como speaker en eventos técnicos de Microsoft como Global AI Spain y Netcoreconf, conectando la innovación con su impacto en el día a día.",
     "link": "https://github.com/ErikaCepedaSanabria"
   }

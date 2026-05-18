@@ -25,7 +25,7 @@ npm run build
 ## Deployment
 
 - Every push to `main` triggers [deploy-pages.yml](.github/workflows/deploy-pages.yml) and publishes the React build.
-- Commits that only update `public/data/issues.json` are ignored by the deploy workflow.
+- Updates to `public/data/issues.json` also trigger a new Pages deploy so event changes reach the live site.
 - [sync-issues.yml](.github/workflows/sync-issues.yml) only keeps `public/data/issues.json` in sync on `main`.
 - Local `gh-pages` publishing is no longer part of the release flow.
 

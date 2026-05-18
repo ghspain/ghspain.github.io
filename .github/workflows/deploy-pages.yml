@@ -4,8 +4,6 @@ name: Deploy GitHub Pages
   push:
     branches:
       - main
-    paths-ignore:
-      - public/data/issues.json
 
 permissions:
   contents: read

@@ -50,6 +50,6 @@ The repository also runs the same checks in [validate.yml](.github/workflows/val
 ## Deployment notes
 
 - Pushes to `main` deploy the site through [deploy-pages.yml](.github/workflows/deploy-pages.yml).
-- Changes that only touch `public/data/issues.json` do not trigger a full site deploy.
+- Changes to `public/data/issues.json` also trigger a Pages deploy so event updates are reflected on the live site.
 - The Pages source for the repository must remain configured as `GitHub Actions`.
 - Do not add back local `gh-pages` publish scripts unless the deployment model is intentionally changed again.

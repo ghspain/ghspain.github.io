@@ -50,23 +50,3 @@ jobs:
         else
           echo "ℹ️ No hay cambios para commitear"
         fi
-
-    - name: Save issues.json to temp before switching branch
-      run: cp public/data/issues.json /tmp/issues.json
-
-    - name: Push issues.json to gh-pages
-      run: |
-        git fetch origin gh-pages
-        git checkout gh-pages
-        mkdir -p data
-        cp /tmp/issues.json data/issues.json
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        if [[ -n $(git status --porcelain data/issues.json) ]]; then
-          git add data/issues.json
-          git commit -m "🤖 Sync issue #${{ github.event.issue.number }} (${{ github.event.action }}) [gh-pages]"
-          git push origin gh-pages
-          echo "✅ issues.json actualizado en gh-pages"
-        else
-          echo "ℹ️ No hay cambios para commitear en gh-pages"
-        fi

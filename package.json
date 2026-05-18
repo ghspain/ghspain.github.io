@@ -26,9 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +47,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react-is": "^19.2.0",
-    "gh-pages": "^6.3.0"
+    "@types/react-is": "^19.2.0"
   }
 }

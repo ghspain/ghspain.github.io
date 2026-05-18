@@ -1,0 +1,43 @@
+name: Validate Website
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - public/data/issues.json
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - public/data/issues.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: CI=true npm test -- --watchAll=false
+
+      - name: Build site
+        run: npm run build

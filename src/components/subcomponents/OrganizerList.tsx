@@ -20,7 +20,7 @@ export function OrganizerList({ organizers }: { organizers: Organizer[] }) {
             align={isEvenIndex ? undefined : 'end'} 
             imageTextRatio="40:60"
           >
-            <River.Visual>
+            <River.Visual style={{ aspectRatio: '1 / 1' }}>
               <img src={getOrganizerImageUrl(organizer.img)} alt={organizer.name} />
             </River.Visual>
             <River.Content animate={animationDirection}>

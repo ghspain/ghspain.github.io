@@ -24,13 +24,13 @@ export const CardIconColors = Colors
 
 export const defaultCardIconColor = CardIconColors[0]
 
-export type CardVariants = (typeof CardVariants)[number]
+export type CardVariant = (typeof CardVariants)[number]
 
 export type CardProps = {
   /**
    * Specify alternative card appearance
    */
-  variant?: CardVariants
+  variant?: CardVariant
   /**
    * Valid children include Card.Image, Card.Heading, and Card.Description
    */

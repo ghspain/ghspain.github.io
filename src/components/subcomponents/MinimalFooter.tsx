@@ -88,7 +88,6 @@ const socialLinkData = {
 } as const
 
 type SocialLinkName = keyof typeof socialLinkData
-type SocialLink = (typeof socialLinkData)[SocialLinkName]
 
 const socialLinkNames = Object.keys(socialLinkData) as SocialLinkName[]
 
@@ -218,7 +217,7 @@ function Footnotes({ children, className }: PropsWithChildren<FootnoteProps>) {
 
 type SocialLinkComponentProps = { name: SocialLinkName }
 
-const SocialLink = ({ name }: SocialLinkComponentProps) => {
+const SocialLinkItem = ({ name }: SocialLinkComponentProps) => {
   const link = socialLinkData[name]
   return (
     <li key={name}>
@@ -275,7 +274,7 @@ function SocialLogomarks({ socialLinks = socialLinkNames, logoHref }: SocialLogo
           {socialLinks ? (
             <ul className={styles['Footer__social-links']}>
               {socialLinks.map(name => (
-                <SocialLink key={name} name={name} />
+                <SocialLinkItem key={name} name={name} />
               ))}
             </ul>
           ) : null}

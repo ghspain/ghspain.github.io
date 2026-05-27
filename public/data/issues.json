@@ -69,5 +69,11 @@
     "event_name": "Curso DevOps & Cloud - GitHub Actions & Platform Engineering",
     "event_link": "https://www.meetup.com/ghspain/events/314707040/",
     "event_date": "5/13/2026 3:30:00 pm"
+  },
+  {
+    "event_id": "314980629",
+    "event_name": "GitHub Copilot Dev Days - Andaluz-IA Tour - Charlas",
+    "event_link": "https://www.meetup.com/ghspain/events/314980629/",
+    "event_date": "6/23/2026 9:30:00 am"
   }
 ]

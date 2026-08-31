@@ -30,6 +30,16 @@ function App() {
   // por lo que se queda arriba. Este efecto se ejecuta tras el render y hace
   // scroll al elemento correspondiente.
   useEffect(() => {
+    // Los acortadores de X y LinkedIn eliminan el fragmento (#) de la URL, así
+    // que githubcommunity.es/#participa se convierte en githubcommunity.es/participa.
+    // Si la app se carga en una ruta que no es la raíz, la convertimos en un hash
+    // y redirigimos a la raíz (p. ej. /participa -> /#participa).
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    if (path) {
+      window.location.replace('/#' + path);
+      return;
+    }
+
     const hash = window.location.hash;
     if (hash) {
       const id = hash.slice(1); // quita el '#'

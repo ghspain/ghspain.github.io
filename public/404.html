@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitHub Community Spain</title>
+    <script>
+      // GitHub Pages sirve este archivo (404.html) para cualquier ruta que no
+      // exista (p. ej. /participa). Los acortadores de X y LinkedIn eliminan el
+      // fragmento (#) de la URL, así que githubcommunity.es/#participa se
+      // convierte en githubcommunity.es/participa. Aquí redirigimos esa ruta
+      // de vuelta a la raíz con el pathname como hash.
+      (function () {
+        var path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+        var hash = path ? '#' + path : '';
+        window.location.replace('/' + hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+  </body>
+</html>

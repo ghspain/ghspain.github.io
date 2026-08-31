@@ -9,6 +9,7 @@ jest.mock('./components', () => ({
   CTASection: () => <section>CTA</section>,
   TimelineSection: () => <section><h2>Ultimos eventos</h2></section>,
   RiverSection: () => <section><h2>Quienes somos</h2></section>,
+  FormSection: () => <section>Form</section>,
   MinimalFooter: () => <footer>Footer</footer>
 }));
 

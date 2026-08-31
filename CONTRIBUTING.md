@@ -6,7 +6,7 @@ This repository contains the public website for the GitHub Spain community.
 
 - Keep changes focused. Separate content updates, deployment changes, and feature work whenever possible.
 - Coordinate with maintainers before changing event ingestion scripts or workflows. That part of the site is under active stabilization.
-- Do not treat `public/data/issues.json` as hand-edited content unless you are doing maintenance on the current sync pipeline.
+- Do not treat `public/data/events.json` as hand-edited content unless you are doing maintenance on the current sync pipeline.
 
 ## Local development
 
@@ -44,12 +44,12 @@ The repository also runs the same checks in [validate.yml](.github/workflows/val
 
 ### Events
 
-- The timeline currently reads generated data from [public/data/issues.json](public/data/issues.json).
-- The event source model is being revised. Until that work is complete, avoid building new features that depend on the current issue-sync behavior without maintainer alignment.
+- The timeline reads generated data from [public/data/events.json](public/data/events.json).
+- The data is generated daily from the Luma calendar by [sync-luma.yml](.github/workflows/sync-luma.yml), which runs `scripts/sync-luma-events.js`.
 
 ## Deployment notes
 
 - Pushes to `main` deploy the site through [deploy-pages.yml](.github/workflows/deploy-pages.yml).
-- Changes to `public/data/issues.json` also trigger a Pages deploy so event updates are reflected on the live site.
+- Changes to `public/data/events.json` also trigger a Pages deploy so event updates are reflected on the live site.
 - The Pages source for the repository must remain configured as `GitHub Actions`.
 - Do not add back local `gh-pages` publish scripts unless the deployment model is intentionally changed again.

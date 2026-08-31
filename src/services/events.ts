@@ -3,7 +3,7 @@ import { getBasePath } from '../utils/publicUrl'
 
 export const buildEventDataUrl = (): string => {
   const basePath = getBasePath()
-  return `${basePath}/data/issues.json`
+  return `${basePath}/data/events.json`
 }
 
 export const fetchEventData = async (): Promise<EventData[]> => {

@@ -1,6 +1,9 @@
 export interface EventData {
-  event_id: string
-  event_name: string
-  event_link: string
-  event_date: string
+  uid: string
+  title: string
+  start: string
+  end: string
+  url: string | null
+  description: string | null
+  location: string | null
 }

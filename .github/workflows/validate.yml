@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths-ignore:
-      - public/data/issues.json
+      - public/data/events.json
   push:
     branches:
       - main
     paths-ignore:
-      - public/data/issues.json
+      - public/data/events.json
 
 permissions:
   contents: read

@@ -1,0 +1,46 @@
+name: Sync Luma Events
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-luma
+  cancel-in-progress: true
+
+jobs:
+  sync-luma:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Sync Luma events to JSON
+        run: node scripts/sync-luma-events.js
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          if [[ -n $(git status --porcelain) ]]; then
+            git add public/data/events.json
+            git commit -m "🤖 Sync Luma events ($(date -u +'%Y-%m-%d'))"
+            git pull --rebase origin main
+            git push
+            echo "✅ Cambios commiteados y pusheados"
+          else
+            echo "ℹ️ No hay cambios para commitear"
+          fi

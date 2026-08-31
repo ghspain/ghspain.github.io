@@ -7,12 +7,23 @@ import { formatDateEs } from '../utils/date'
 const TimelineSection: React.FC = () => {
     const { data, loading, error } = useEvents();
 
+    // Los 5 eventos más recientes, incluyendo los próximos.
+    // Se ordenan por proximidad a la fecha actual: los futuros más cercanos
+    // primero y, si no hay suficientes, se completan con los pasados más recientes.
     const events = useMemo(() => {
-        return [...data].sort((a: EventData, b: EventData) => {
-            const dateA = new Date(a.event_date);
-            const dateB = new Date(b.event_date);
-            return dateB.getTime() - dateA.getTime();
-        });
+        const now = Date.now();
+        return [...data]
+            .sort((a: EventData, b: EventData) => {
+                const dateA = new Date(a.start).getTime();
+                const dateB = new Date(b.start).getTime();
+                // Distancia absoluta a "ahora": más cercanos primero
+                return Math.abs(dateA - now) - Math.abs(dateB - now);
+            })
+            .slice(0, 5)
+            .sort((a: EventData, b: EventData) => {
+                // Dentro de los 5 seleccionados, ordenar cronológicamente
+                return new Date(a.start).getTime() - new Date(b.start).getTime();
+            });
     }, [data]);
 
     if (loading) {
@@ -74,21 +85,21 @@ const TimelineSection: React.FC = () => {
             </SectionIntro>
             <Stack padding="spacious" alignItems="center" gap="spacious">
                 <Timeline fullWidth={true}>
-                    {events.slice(0, 5).map((event) => {
-                        const isFuture = new Date(event.event_date) > new Date();
+                    {events.map((event) => {
+                        const isFuture = new Date(event.start) > new Date();
                         return (
-                            <Timeline.Item key={event.event_id}>
+                            <Timeline.Item key={event.uid}>
                                 <Animate animate="fade-in">
-                                    {formatDateEs(event.event_date)}{' '}
+                                    {formatDateEs(event.start)}{' '}
                                 </Animate>
                                 <Animate animate="slide-in-right">
                                     <Link
                                         arrowDirection='none'
-                                        href={event.event_link}
+                                        href={event.url ?? '#'}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        {isFuture ? 'Próximamente: ' : ''}{event.event_name}
+                                        {isFuture ? 'Próximamente: ' : ''}{event.title}
                                     </Link>
                                 </Animate>
                             </Timeline.Item>

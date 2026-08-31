@@ -25,8 +25,8 @@ npm run build
 ## Deployment
 
 - Every push to `main` triggers [deploy-pages.yml](.github/workflows/deploy-pages.yml) and publishes the React build.
-- Updates to `public/data/issues.json` also trigger a new Pages deploy so event changes reach the live site.
-- [sync-issues.yml](.github/workflows/sync-issues.yml) only keeps `public/data/issues.json` in sync on `main`.
+- Updates to `public/data/events.json` also trigger a new Pages deploy so event changes reach the live site.
+- [sync-luma.yml](.github/workflows/sync-luma.yml) keeps `public/data/events.json` in sync daily from the Luma calendar.
 - Local `gh-pages` publishing is no longer part of the release flow.
 
 ## Pages configuration

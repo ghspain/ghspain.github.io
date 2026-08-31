@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import '@primer/react-brand/lib/css/main.css'
 import '@primer/react-brand/fonts/fonts.css'
 import { ThemeProvider } from '@primer/react-brand';
@@ -24,6 +25,24 @@ const designTokenOverrides = `
 `
 
 function App() {
+  // Cuando se entra directamente con un hash en la URL (p. ej. #participa),
+  // el navegador intenta hacer scroll antes de que React haya renderizado el DOM,
+  // por lo que se queda arriba. Este efecto se ejecuta tras el render y hace
+  // scroll al elemento correspondiente.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.slice(1); // quita el '#'
+      // Esperamos un frame para asegurar que el DOM está completamente pintado
+      requestAnimationFrame(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+  }, []);
+
   return (
     <ThemeProvider colorMode='auto' className="custom-colors">
       <style>{designTokenOverrides}</style>

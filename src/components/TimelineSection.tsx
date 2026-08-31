@@ -21,8 +21,8 @@ const TimelineSection: React.FC = () => {
             })
             .slice(0, 5)
             .sort((a: EventData, b: EventData) => {
-                // Dentro de los 5 seleccionados, ordenar cronológicamente
-                return new Date(a.start).getTime() - new Date(b.start).getTime();
+                // Dentro de los 5 seleccionados, ordenar del más reciente al más antiguo
+                return new Date(b.start).getTime() - new Date(a.start).getTime();
             });
     }, [data]);
 
@@ -30,7 +30,7 @@ const TimelineSection: React.FC = () => {
         return (
             <Section>
                 <SectionIntro align="center">
-                    <SectionIntro.Heading size="1">Últimos eventos</SectionIntro.Heading>
+                    <SectionIntro.Heading size="1">Nuestros eventos</SectionIntro.Heading>
                 </SectionIntro>
                 <Stack padding="spacious" alignItems="center" gap="spacious">
                     <Timeline fullWidth={false}>
@@ -47,7 +47,7 @@ const TimelineSection: React.FC = () => {
         return (
             <Section>
                 <SectionIntro align="center">
-                    <SectionIntro.Heading size="1">Últimos eventos</SectionIntro.Heading>
+                    <SectionIntro.Heading size="1">Nuestros eventos</SectionIntro.Heading>
                 </SectionIntro>
                 <Stack padding="spacious" alignItems="center" gap="spacious">
                     <Timeline fullWidth={true}>
@@ -64,7 +64,7 @@ const TimelineSection: React.FC = () => {
         return (
             <Section>
                 <SectionIntro align="center">
-                    <SectionIntro.Heading size="1">Últimos eventos</SectionIntro.Heading>
+                    <SectionIntro.Heading size="1">Nuestros eventos</SectionIntro.Heading>
                 </SectionIntro>
                 <Stack padding="spacious" alignItems="center" gap="spacious">
                     <Timeline fullWidth={true}>
@@ -81,7 +81,7 @@ const TimelineSection: React.FC = () => {
         <AnimationProvider>
         <Section paddingBlockEnd="none">
             <SectionIntro align="center">
-                <SectionIntro.Heading size="2">Últimos eventos</SectionIntro.Heading>
+                <SectionIntro.Heading size="2">Nuestros eventos</SectionIntro.Heading>
             </SectionIntro>
             <Stack padding="spacious" alignItems="center" gap="spacious">
                 <Timeline fullWidth={true}>

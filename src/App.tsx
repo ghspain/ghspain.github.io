@@ -1,7 +1,7 @@
 import '@primer/react-brand/lib/css/main.css'
 import '@primer/react-brand/fonts/fonts.css'
 import { ThemeProvider } from '@primer/react-brand';
-import { MinimalFooter, Navigation, TimelineSection, HeroSection, CTASection, CardsSection, RiverSection } from './components';
+import { MinimalFooter, Navigation, TimelineSection, HeroSection, CTASection, CardsSection, RiverSection, FormSection } from './components';
 
 const designTokenOverrides = `
   .custom-colors[data-color-mode='dark'] {
@@ -36,6 +36,7 @@ function App() {
       }}>
         <Navigation />
         <HeroSection />
+        <FormSection />
         <CardsSection />
         <CTASection />
         <TimelineSection />

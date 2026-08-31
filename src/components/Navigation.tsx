@@ -10,7 +10,7 @@ const Navigation: React.FC = () => {
       <AnchorNav.Link href="#quienes-somos">¿Quiénes somos?</AnchorNav.Link>
       {/* <AnchorNav.Action href="https://www.meetup.com/ghspain">Meet up</AnchorNav.Action> */}
       <AnchorNav.Action href="https://lu.ma/ghspain">Calendario</AnchorNav.Action>
-      <AnchorNav.SecondaryAction href="https://docs.google.com/forms/d/e/1FAIpQLSd-xUeagozDG_Hs83VK80FTnXE2FoumvixP6cskKHQuUC37Mw/viewform?usp=dialog" >Participa</AnchorNav.SecondaryAction>
+      <AnchorNav.SecondaryAction href="#participa">Participa</AnchorNav.SecondaryAction>
     </AnchorNav>
   );
 };

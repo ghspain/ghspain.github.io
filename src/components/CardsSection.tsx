@@ -4,7 +4,7 @@ import { Card } from './subcomponents/Card';
 
 const CardsSection: React.FC = () => {
   return (
-    <Section paddingBlockStart="none" paddingBlockEnd="normal" id="que-hacemos">
+    <Section paddingBlockStart="spacious" paddingBlockEnd="normal" id="que-hacemos">
       <SectionIntro align="center">
         <SectionIntro.Heading size="3">¿Que hacemos?</SectionIntro.Heading>
         <SectionIntro.Description>Fomentamos la cultura del aprendizaje continuo, la curiosidad y la experimentación. Animamos a todos los miembros de nuestra comunidad a que se involucren en el proceso de enseñar y aprender, tanto dentro como fuera de nuestra red.</SectionIntro.Description>

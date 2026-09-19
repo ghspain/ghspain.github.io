@@ -99,6 +99,15 @@
     "location": "Málaga, Province of Málaga, Spain"
   },
   {
+    "uid": "evt-sKp2KQG5u19TNjF@events.lu.ma",
+    "title": "Dev Days | Profesionals Madrid, Spain",
+    "start": "2026-10-01T15:00:00.000Z",
+    "end": "2026-10-01T18:00:00.000Z",
+    "url": "https://lu.ma/event/evt-sKp2KQG5u19TNjF",
+    "description": "Get up-to-date information at: https://luma.com/e7xm7045\n\nAddress:\nCelonis SL\nMadrid, Spain\n\nHosted by Tech Riders, GitHub Community Spain & Dev Days",
+    "location": "Celonis SL, Pl. de Manuel Gómez-Moreno, 2, Tetuán, 28020 Madrid, Spain"
+  },
+  {
     "uid": "evt-zKmKjgx4AhDxPQL@events.lu.ma",
     "title": "Dev Days | Córdoba, Spain",
     "start": "2026-10-24T09:00:00.000Z",
@@ -106,5 +115,14 @@
     "url": "https://lu.ma/event/evt-zKmKjgx4AhDxPQL",
     "description": "Get up-to-date information at: https://luma.com/lnetwegw\n\nAddress:\nCórdoba\nCórdoba, Spain\n\nHosted by Dev Days & 3 others",
     "location": "Córdoba, Spain"
+  },
+  {
+    "uid": "evt-yqx3pYDG7TQ3BJi@events.lu.ma",
+    "title": "Dev Days | Students Madrid, Spain",
+    "start": "2026-11-06T08:30:00.000Z",
+    "end": "2026-11-06T13:30:00.000Z",
+    "url": "https://lu.ma/event/evt-yqx3pYDG7TQ3BJi",
+    "description": "Get up-to-date information at: https://luma.com/s3r4fn9c\n\nAddress:\nFundación Tajamar | Promoción de proyectos educativos, formativos, culturales y deportivos\nMadrid, Spain\n\nHosted by Dev Days, Tech Riders & GitHub Community Spain",
+    "location": "Fundación Tajamar | Promoción de proyectos educativos, formativos, culturales y deportivos, C. de Pío Felipe, 12, Edificio Central, Puente de Vallecas, 28038 Madrid, Spain"
   }
 ]

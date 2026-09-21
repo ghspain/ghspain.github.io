@@ -4,6 +4,17 @@ import { River } from './River'
 import { Heading, Text, Link } from '@primer/react-brand'
 import styles from './OrganizerList.module.css'
 
+const recognitionLogoByKind = {
+  'github-star': {
+    src: `${process.env.PUBLIC_URL}/images/logos/recognitions/github-stars-logo.png`,
+    imageStyle: { width: 'min(56px, 18vw)' },
+  },
+  'microsoft-mvp': {
+    src: `${process.env.PUBLIC_URL}/images/logos/recognitions/microsoft-mvp-banner.png`,
+    imageStyle: { width: 'min(168px, 42vw)', borderRadius: '12px' },
+  },
+} as const
+
 type OrganizerListProps = Readonly<{ organizers: Organizer[] }>
 
 type RecognitionBadgeProps = Readonly<{
@@ -12,30 +23,19 @@ type RecognitionBadgeProps = Readonly<{
 }>
 
 function RecognitionBadge({ recognition, organizerName }: RecognitionBadgeProps) {
-  const isMicrosoftMvp = recognition.kind === 'microsoft-mvp'
+  const logo = recognitionLogoByKind[recognition.kind]
+  const variantClassName = styles[`RecognitionBadge--${recognition.kind}`]
 
   return (
     <a
-      className={`${styles.RecognitionBadge} ${isMicrosoftMvp ? styles['RecognitionBadge--microsoft-mvp'] : styles['RecognitionBadge--github-star']}`}
+      className={`${styles.RecognitionBadge} ${variantClassName}`}
       href={recognition.url}
       target="_blank"
       rel="noreferrer"
       aria-label={`${recognition.label} page for ${organizerName}`}
       title={`${recognition.label} · ${organizerName}`}
     >
-      <span className={styles.RecognitionBadge__icon} aria-hidden="true">
-        {isMicrosoftMvp ? (
-          <span className={styles.MicrosoftGlyph}>
-            <span />
-            <span />
-            <span />
-            <span />
-          </span>
-        ) : (
-          <span className={styles.GitHubStarGlyph}>★</span>
-        )}
-      </span>
-      <span className={styles.RecognitionBadge__label}>{recognition.label}</span>
+      <img className={styles.RecognitionBadge__image} src={logo.src} alt="" style={logo.imageStyle} />
     </a>
   )
 }

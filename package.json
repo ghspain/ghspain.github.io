@@ -4,20 +4,20 @@
   "private": true,
   "homepage": "https://ghspain.github.io/",
   "dependencies": {
-    "@primer/brand-primitives": "^0.57.0",
-    "@primer/octicons-react": "^19.15.5",
-    "@primer/react-brand": "^0.57.0",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.6.4",
-    "@testing-library/react": "^16.3.0",
+    "@primer/brand-primitives": "^0.57.2",
+    "@primer/octicons-react": "^19.38.0",
+    "@primer/react-brand": "^0.57.2",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "clsx": "^2.1.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -47,6 +47,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react-is": "^19.2.0"
+    "@types/react-is": "^19.3.0"
   }
 }

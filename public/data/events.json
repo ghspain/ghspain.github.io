@@ -90,15 +90,6 @@
     "location": "NTT DATA Spain, Novus Building, Cam. de la Fuente de la Mora, 1, Hortaleza, 28050 Madrid, Spain"
   },
   {
-    "uid": "evt-APv7esTlqIjBsxq@events.lu.ma",
-    "title": "Dev Days | Málaga, Spain",
-    "start": "2026-09-30T14:00:00.000Z",
-    "end": "2026-09-30T17:00:00.000Z",
-    "url": "https://lu.ma/event/evt-APv7esTlqIjBsxq",
-    "description": "Get up-to-date information at: https://luma.com/t5i2ji0a\n\nAddress:\nMálaga\nMálaga, Spain\n\nHosted by Dev Days, Alejandro Cerezo & GitHub Community Spain",
-    "location": "Málaga, Province of Málaga, Spain"
-  },
-  {
     "uid": "evt-yqx3pYDG7TQ3BJi@events.lu.ma",
     "title": "Dev Days | Profesionals Madrid, Spain",
     "start": "2026-10-01T16:00:00.000Z",
@@ -106,6 +97,15 @@
     "url": "https://lu.ma/event/evt-yqx3pYDG7TQ3BJi",
     "description": "Get up-to-date information at: https://luma.com/s3r4fn9c\n\nAddress:\nCelonis SL\nMadrid, Spain\n\nHosted by Dev Days, Tech Riders & GitHub Community Spain",
     "location": "Celonis SL, Pl. de Manuel Gómez-Moreno, 2, Tetuán, 28020 Madrid, Spain"
+  },
+  {
+    "uid": "evt-APv7esTlqIjBsxq@events.lu.ma",
+    "title": "Dev Days | Málaga, Spain",
+    "start": "2026-10-22T14:00:00.000Z",
+    "end": "2026-10-22T17:00:00.000Z",
+    "url": "https://lu.ma/event/evt-APv7esTlqIjBsxq",
+    "description": "Get up-to-date information at: https://luma.com/t5i2ji0a\n\nAddress:\nMálaga\nMálaga, Spain\n\nHosted by Dev Days, Alejandro Cerezo & GitHub Community Spain",
+    "location": "Málaga, Province of Málaga, Spain"
   },
   {
     "uid": "evt-zKmKjgx4AhDxPQL@events.lu.ma",

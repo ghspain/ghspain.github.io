@@ -99,6 +99,15 @@
     "location": "Celonis SL, Pl. de Manuel Gómez-Moreno, 2, Tetuán, 28020 Madrid, Spain"
   },
   {
+    "uid": "evt-zKmKjgx4AhDxPQL@events.lu.ma",
+    "title": "Dev Days | Córdoba, Spain",
+    "start": "2026-10-16T08:00:00.000Z",
+    "end": "2026-10-16T17:00:00.000Z",
+    "url": "https://lu.ma/event/evt-zKmKjgx4AhDxPQL",
+    "description": "Get up-to-date information at: https://luma.com/lnetwegw\n\nAddress:\nCórdoba\nCórdoba, Spain\n\nHosted by Dev Days & 3 others",
+    "location": "Córdoba, Spain"
+  },
+  {
     "uid": "evt-APv7esTlqIjBsxq@events.lu.ma",
     "title": "Dev Days | Málaga, Spain",
     "start": "2026-10-22T14:00:00.000Z",
@@ -106,15 +115,6 @@
     "url": "https://lu.ma/event/evt-APv7esTlqIjBsxq",
     "description": "Get up-to-date information at: https://luma.com/t5i2ji0a\n\nAddress:\nMálaga\nMálaga, Spain\n\nHosted by Dev Days, Alejandro Cerezo & GitHub Community Spain",
     "location": "Málaga, Province of Málaga, Spain"
-  },
-  {
-    "uid": "evt-zKmKjgx4AhDxPQL@events.lu.ma",
-    "title": "Dev Days | Córdoba, Spain",
-    "start": "2026-10-24T09:00:00.000Z",
-    "end": "2026-10-24T17:00:00.000Z",
-    "url": "https://lu.ma/event/evt-zKmKjgx4AhDxPQL",
-    "description": "Get up-to-date information at: https://luma.com/lnetwegw\n\nAddress:\nCórdoba\nCórdoba, Spain\n\nHosted by Dev Days & 3 others",
-    "location": "Córdoba, Spain"
   },
   {
     "uid": "evt-sKp2KQG5u19TNjF@events.lu.ma",
